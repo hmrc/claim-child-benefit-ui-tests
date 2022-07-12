@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,15 +21,16 @@ import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 trait BasePage extends BrowserDriver with Matchers {
-  val continueButton = "continue-button"
 
-  def submitPage(): Unit =
-    driver.findElement(By.id(continueButton)).click()
+  def title: String
 
-  def onPage(pageTitle: String): Unit =
-    if (driver.getTitle != pageTitle)
+  def continue(): Unit =
+    driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
+
+  def onPage(): Unit =
+    if (driver.getTitle != s"$title - Claim Child Benefit - GOV.UK")
       throw PageNotFoundException(
-        s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."
+        s"Expected '$title' page, but found '${driver.getTitle}' page."
       )
 }
 

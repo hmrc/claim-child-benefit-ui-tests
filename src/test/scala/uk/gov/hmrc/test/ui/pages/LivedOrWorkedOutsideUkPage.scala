@@ -14,16 +14,9 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.driver
+package uk.gov.hmrc.test.ui.pages
 
-import com.typesafe.scalalogging.LazyLogging
-import org.openqa.selenium.WebDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
+object LivedOrWorkedOutsideUkPage extends BasePage with BooleanPage {
 
-trait BrowserDriver extends LazyLogging {
-  logger.info(
-    s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}"
-  )
-
-  implicit lazy val driver: WebDriver = SingletonDriver.getInstance()
+  override val title: String = "Have you or your partner ever lived or worked outside the UK?"
 }
