@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+object UsePrintAndPostFormPage extends BasePage {
 
-object Turnover extends BasePage {
-
-  val turnover      = "Enter your turnover - Check your VAT flat rate - GOV.UK"
-  val turnoverInput = "turnover"
-
-  def provideTurnoverAmount(amount: String): CostOfGoods.type = {
-    onPage(turnover)
-    driver.findElement(By.id(turnoverInput)).sendKeys(amount)
-    submitPage()
-    CostOfGoods
-  }
-
+  override val title: String = "You must use a different form to claim Child Benefit"
 }
