@@ -17,21 +17,18 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import org.scalatest.matchers.should.Matchers
+import org.scalactic.source.Position
+import org.scalatest.matchers.must.Matchers
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 trait BasePage extends BrowserDriver with Matchers {
 
-  def title: String
+  def url: String
 
   def continue(): Unit =
     driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
 
-  def onPage(): Unit =
-    if (driver.getTitle != s"$title - Claim Child Benefit - GOV.UK")
-      throw PageNotFoundException(
-        s"Expected '$title' page, but found '${driver.getTitle}' page."
-      )
+  def onPage()(implicit pos: Position): Unit =
+    driver.getCurrentUrl mustEqual s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url"
 }
-
-case class PageNotFoundException(s: String) extends Exception(s)

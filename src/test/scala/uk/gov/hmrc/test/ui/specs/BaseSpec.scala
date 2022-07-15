@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.specs
 import org.scalatest._
 import org.scalatest.concurrent.Eventually
 import org.scalatest.featurespec.AnyFeatureSpec
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.must.Matchers
 import org.scalatestplus.selenium.WebBrowser
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import uk.gov.hmrc.webdriver.SingletonDriver

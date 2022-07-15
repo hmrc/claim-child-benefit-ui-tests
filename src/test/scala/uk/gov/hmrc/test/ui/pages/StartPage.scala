@@ -21,12 +21,10 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object StartPage extends BasePage {
 
-  override val title: String = "Fill in the Child Benefit claim form"
-  val url: String            = TestConfiguration.url("claim-child-benefit-frontend")
+  val url: String = TestConfiguration.url("claim-child-benefit-frontend")
 
   def loadPage(): this.type = {
     driver.navigate().to(url)
-    onPage()
     this
   }
 

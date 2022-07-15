@@ -18,5 +18,5 @@ package uk.gov.hmrc.test.ui.pages
 
 object LivedOrWorkedOutsideUkPage extends BasePage with BooleanPage {
 
-  override val title: String = "Have you or your partner ever lived or worked outside the UK?"
+  override val url: String = "ever-lived-or-worked-abroad"
 }
