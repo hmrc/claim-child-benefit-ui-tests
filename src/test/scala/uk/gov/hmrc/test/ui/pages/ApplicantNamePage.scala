@@ -18,17 +18,15 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
 import org.scalactic.source.Position
-import org.scalatest.matchers.must.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-trait BasePage extends BrowserDriver with Matchers {
+object ApplicantNamePage extends BasePage {
 
-  def url: String
+  override val url: String = "your-name"
 
-  def continue()(implicit pos: Position): Unit =
-    driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
-
-  def onPage()(implicit pos: Position): Unit =
-    driver.getCurrentUrl mustEqual s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url"
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("firstName")).sendKeys("Foo")
+    driver.findElement(By.id("lastName")).sendKeys("Bar")
+    continue()
+  }
 }

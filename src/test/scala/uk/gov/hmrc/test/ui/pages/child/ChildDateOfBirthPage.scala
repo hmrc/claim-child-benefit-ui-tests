@@ -14,21 +14,22 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.child
 
-import org.openqa.selenium.By
 import org.scalactic.source.Position
-import org.scalatest.matchers.must.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import uk.gov.hmrc.test.ui.pages.{BasePage, DatePage}
 
-trait BasePage extends BrowserDriver with Matchers {
+import java.time.LocalDate
 
-  def url: String
+final case class ChildDateOfBirthPage(index: Int) extends BasePage with DatePage {
 
-  def continue()(implicit pos: Position): Unit =
-    driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
+  override val url: String = s"child-date-of-birth/$index"
 
-  def onPage()(implicit pos: Position): Unit =
-    driver.getCurrentUrl mustEqual s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url"
+  private def dob: LocalDate = LocalDate.now.minusYears(1)
+
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    answerDate(dob)
+    continue()
+  }
 }

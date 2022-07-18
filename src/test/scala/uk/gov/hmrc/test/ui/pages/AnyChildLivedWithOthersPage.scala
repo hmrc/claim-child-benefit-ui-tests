@@ -18,6 +18,5 @@ package uk.gov.hmrc.test.ui.pages
 
 object AnyChildLivedWithOthersPage extends BasePage with BooleanPage {
 
-  override def title: String =
-    "Have any of the children you will claim for lived with anyone else in the last 12 months?"
+  override def url: String = "any-child-in-claim-lived-with-others"
 }

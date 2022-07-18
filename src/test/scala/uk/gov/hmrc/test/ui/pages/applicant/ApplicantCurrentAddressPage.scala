@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.applicant
 
 import org.openqa.selenium.By
 import org.scalactic.source.Position
-import org.scalatest.matchers.must.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-trait BasePage extends BrowserDriver with Matchers {
+object ApplicantCurrentAddressPage extends BasePage {
 
-  def url: String
+  override val url: String = "your-current-address"
 
-  def continue()(implicit pos: Position): Unit =
-    driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
-
-  def onPage()(implicit pos: Position): Unit =
-    driver.getCurrentUrl mustEqual s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url"
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("line1")).sendKeys("1 Test Street")
+    driver.findElement(By.id("town")).sendKeys("Test Town")
+    driver.findElement(By.id("postcode")).sendKeys("ZZ1 1ZZ")
+    continue()
+  }
 }

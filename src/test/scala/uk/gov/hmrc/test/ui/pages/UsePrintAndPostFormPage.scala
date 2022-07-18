@@ -18,5 +18,5 @@ package uk.gov.hmrc.test.ui.pages
 
 object UsePrintAndPostFormPage extends BasePage {
 
-  override val title: String = "You must use a different form to claim Child Benefit"
+  override val url: String = "use-other-form"
 }

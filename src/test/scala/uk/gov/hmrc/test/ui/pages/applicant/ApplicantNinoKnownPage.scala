@@ -14,21 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.applicant
 
-import org.openqa.selenium.By
-import org.scalactic.source.Position
-import org.scalatest.matchers.must.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-trait BasePage extends BrowserDriver with Matchers {
+object ApplicantNinoKnownPage extends BasePage with BooleanPage {
 
-  def url: String
-
-  def continue()(implicit pos: Position): Unit =
-    driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
-
-  def onPage()(implicit pos: Position): Unit =
-    driver.getCurrentUrl mustEqual s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url"
+  override val url: String = "know-your-national-insurance-number"
 }

@@ -17,16 +17,17 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import org.scalactic.source.Position
 
 trait BooleanPage { _: BasePage =>
 
-  def answerYes(): Unit = {
+  def answerYes()(implicit pos: Position): Unit = {
     onPage()
     driver.findElement(By.id("value")).click()
     continue()
   }
 
-  def answerNo(): Unit = {
+  def answerNo()(implicit pos: Position): Unit = {
     onPage()
     driver.findElement(By.id("value-no")).click()
     continue()
