@@ -16,25 +16,57 @@
 
 package uk.gov.hmrc.test.ui.specs
 
-import uk.gov.hmrc.test.ui.pages.{AnyChildLivedWithOthersPage, LivedOrWorkedOutsideUkPage, StartPage, UsePrintAndPostFormPage}
+import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.specs.tags.ZapTests
 
 class JourneySpec extends BaseSpec {
 
   Feature("Journeys for completing the form and generating a PDF") {
 
-    // TODO stand in for a specific journey
-    ignore("Simple journey", ZapTests) {
+    Scenario("Simple journey", ZapTests) {
 
       Given("I am on the start page")
       StartPage.loadPage()
 
-      When("I complete the X journey")
+      When("I complete the simplest journey")
       StartPage.startNow()
       LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+      RelationshipStatusPage.answerSingle()
+
+      income.ApplicantIncomeOver50kPage.answerNo()
+      income.ApplicantBenefitsPage.answer()
+      income.TaxChargeExplanationPage.continue()
+
+      payments.ClaimedChildBenefitBeforePage.answerNo()
+      payments.WantToBePaidPage.answerNo()
+
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantDateOfBirthPage.answer()
+      applicant.ApplicantCurrentAddressPage.answer()
+      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
+      applicant.ApplicantPhoneNumberPage.answer()
+      applicant.BestTimeToContactPage.answer()
+      applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantEmploymentStatusPage.answer()
+
+      child.ChildNamePage(1).answer()
+      child.ChildHasPreviousNamePage(1).answerNo()
+      child.ChildBiologicalSexPage(1).answer()
+      child.ChildDateOfBirthPage(1).answer()
+      child.ChildBirthRegistrationCountryPage(1).answer()
+      child.ChildBirthCertificateSystemNumberPage(1).answer()
+      child.ApplicantRelationshipToChildPage(1).answer()
+      child.AnyoneClaimedForChildBeforePage(1).answerNo()
+      child.CheckChildDetailsPage(1).continue()
+      child.AddChildPage.answerNo()
+
+      CheckYourAnswersPage.onPage()
 
       Then("I should be able to download the PDF")
+      // TODO
     }
   }
 

@@ -14,21 +14,20 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.child
 
 import org.openqa.selenium.By
 import org.scalactic.source.Position
-import org.scalatest.matchers.must.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-trait BasePage extends BrowserDriver with Matchers {
+final case class ChildBirthCertificateSystemNumberPage(index: Int) extends BasePage {
 
-  def url: String
+  override def url: String = s"child-birth-certificate-system-number/$index"
 
-  def continue()(implicit pos: Position): Unit =
-    driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
-
-  def onPage()(implicit pos: Position): Unit =
-    driver.getCurrentUrl mustEqual s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url"
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    // TODO generated data
+    driver.findElement(By.id("value")).sendKeys("123456789")
+    continue()
+  }
 }
