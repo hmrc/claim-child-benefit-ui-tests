@@ -17,22 +17,29 @@
 package uk.gov.hmrc.test.ui.pages.child
 
 import org.openqa.selenium.By
+import org.scalacheck.Gen
 import org.scalactic.source.Position
+import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-final case class ApplicantRelationshipToChildPage(index: Int) extends BasePage {
+import java.time.Year
 
-  override val url: String = s"your-relationship-to-child/$index"
+final case class ChildScottishBirthCertificateDetailsPage(index: Int) extends BasePage with OptionValues {
+
+  override val url: String = s"child-scottish-birth-certificate-details/$index"
+
+  private lazy val districtNumber: String = Gen.listOfN(3, Gen.numChar).map(_.mkString("")).sample.value
+  private lazy val year: String           = Year.now.minusYears(1).toString
+  private lazy val entryNumber: String    = (for {
+    length <- Gen.chooseNum(1, 3)
+    chars  <- Gen.listOfN(length, Gen.numChar)
+  } yield chars.mkString("")).sample.value
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerAdopting()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_2")).click()
+    driver.findElement(By.id("district")).sendKeys(districtNumber)
+    driver.findElement(By.id("year")).sendKeys(year)
+    driver.findElement(By.id("entryNumber")).sendKeys(entryNumber)
     continue()
   }
 }

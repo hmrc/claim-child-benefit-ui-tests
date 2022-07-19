@@ -14,25 +14,21 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.child
+package uk.gov.hmrc.test.ui.pages.applicant
 
 import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-final case class ApplicantRelationshipToChildPage(index: Int) extends BasePage {
+object ApplicantPreviousAddressPage extends BasePage {
 
-  override val url: String = s"your-relationship-to-child/$index"
+  override val url: String = "your-previous-address"
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerAdopting()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_2")).click()
+    driver.findElement(By.id("line1")).sendKeys("2 Test Street")
+    driver.findElement(By.id("town")).sendKeys("Test Town")
+    driver.findElement(By.id("postcode")).sendKeys("ZZ2 1ZZ")
     continue()
   }
 }

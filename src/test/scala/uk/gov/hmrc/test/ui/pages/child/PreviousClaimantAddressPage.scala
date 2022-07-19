@@ -20,19 +20,15 @@ import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-final case class ApplicantRelationshipToChildPage(index: Int) extends BasePage {
+final case class PreviousClaimantAddressPage(index: Int) extends BasePage {
 
-  override val url: String = s"your-relationship-to-child/$index"
+  override val url: String = s"previous-claimant-address/$index"
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerAdopting()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_2")).click()
+    driver.findElement(By.id("line1")).sendKeys("3 Test Street")
+    driver.findElement(By.id("town")).sendKeys("Test Town")
+    driver.findElement(By.id("postcode")).sendKeys("ZZ3 1ZZ")
     continue()
   }
 }

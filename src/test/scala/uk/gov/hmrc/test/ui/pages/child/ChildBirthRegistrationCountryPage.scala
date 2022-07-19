@@ -24,9 +24,15 @@ final case class ChildBirthRegistrationCountryPage(index: Int) extends BasePage 
 
   override val url: String = s"child-birth-registration-country/$index"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answerEngland()(implicit pos: Position): Unit = {
     onPage()
     driver.findElement(By.id("value_0")).click()
+    continue()
+  }
+
+  def answerScotland()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_1")).click()
     continue()
   }
 }

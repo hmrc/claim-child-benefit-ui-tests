@@ -17,22 +17,17 @@
 package uk.gov.hmrc.test.ui.pages.child
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.BasePage
+import org.scalatest.OptionValues
+import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-final case class ApplicantRelationshipToChildPage(index: Int) extends BasePage {
+import scala.collection.JavaConverters._
 
-  override val url: String = s"your-relationship-to-child/$index"
+final case class AddChildPreviousNamePage(index: Int) extends BasePage with BooleanPage with OptionValues {
 
-  def answer()(implicit pos: Position): Unit = {
+  override val url: String = s"add-child-previous-name/$index"
+
+  def remove(index: Int): Unit = {
     onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerAdopting()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_2")).click()
-    continue()
+    driver.findElements(By.xpath("//a[*/text() = 'Remove']")).asScala.lift(index - 1).value.click()
   }
 }
