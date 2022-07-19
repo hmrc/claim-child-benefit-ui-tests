@@ -95,6 +95,20 @@ class JourneySpec extends BaseSpec {
       child.PreviousClaimantNamePage(2).answer()
       child.PreviousClaimantAddressPage(2).answer()
       child.CheckChildDetailsPage(2).continue()
+
+      child.AddChildPage.answerYes()
+      child.ChildNamePage(3).answer()
+      child.ChildHasPreviousNamePage(3).answerNo()
+      child.ChildBiologicalSexPage(3).answer()
+      child.ChildDateOfBirthPage(3).answer()
+      child.ChildBirthRegistrationCountryPage(3).answerOther()
+      child.ApplicantRelationshipToChildPage(3).answer()
+      child.AnyoneClaimedForChildBeforePage(3).answerNo()
+      child.IncludedDocumentsPage(3).answer()
+      child.CheckChildDetailsPage(3).continue()
+
+      child.AddChildPage.remove(1)
+      child.RemoveChildPage(1).answerNo()
       child.AddChildPage.answerNo()
 
       CheckYourAnswersPage.onPage()
