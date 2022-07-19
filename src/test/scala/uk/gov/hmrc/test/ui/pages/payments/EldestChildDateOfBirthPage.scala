@@ -14,11 +14,22 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.applicant
+package uk.gov.hmrc.test.ui.pages.payments
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, NinoPage}
+import org.scalactic.source.Position
+import uk.gov.hmrc.test.ui.pages.{BasePage, DatePage}
 
-object ApplicantNinoPage extends BasePage with NinoPage {
+import java.time.LocalDate
 
-  override val url: String = "your-national-insurance-number"
+object EldestChildDateOfBirthPage extends BasePage with DatePage {
+
+  override val url: String = "eldest-child-date-of-birth"
+
+  private lazy val dob: LocalDate = LocalDate.now.minusYears(10)
+
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    answerDate(dob)
+    continue()
+  }
 }

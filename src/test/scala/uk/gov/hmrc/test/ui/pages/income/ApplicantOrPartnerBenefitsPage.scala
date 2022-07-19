@@ -14,11 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.applicant
+package uk.gov.hmrc.test.ui.pages.income
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, NinoPage}
+import org.openqa.selenium.By
+import org.scalactic.source.Position
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-object ApplicantNinoPage extends BasePage with NinoPage {
+object ApplicantOrPartnerBenefitsPage extends BasePage {
 
-  override val url: String = "your-national-insurance-number"
+  override val url: String = "your-or-your-partners-benefits"
+
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_5")).click()
+    continue()
+  }
 }

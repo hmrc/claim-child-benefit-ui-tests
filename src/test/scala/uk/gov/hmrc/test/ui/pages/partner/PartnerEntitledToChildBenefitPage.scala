@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.child
+package uk.gov.hmrc.test.ui.pages.partner
 
 import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-final case class ChildNameChangedByDeedPoll(index: Int) extends BasePage with BooleanPage {
+object PartnerEntitledToChildBenefitPage extends BasePage with BooleanPage {
 
-  override val url: String = s"child-name-changed-by-deed-poll/$index"
+  override val url: String = "partner-currently-entitled-to-child-benefit"
 }
