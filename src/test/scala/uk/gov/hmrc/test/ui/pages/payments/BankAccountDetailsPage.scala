@@ -14,25 +14,30 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.child
+package uk.gov.hmrc.test.ui.pages.payments
 
 import org.openqa.selenium.By
+import org.scalacheck.Gen
 import org.scalactic.source.Position
+import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-final case class ApplicantRelationshipToChildPage(index: Int) extends BasePage {
+object BankAccountDetailsPage extends BasePage with OptionValues {
 
-  override val url: String = s"your-relationship-to-child/$index"
+  override val url: String = "bank-account-details"
+
+  private lazy val sortCode: String = Gen.listOfN(6, Gen.numChar).map(_.mkString("")).sample.value
+
+  private lazy val accountNumber: String = (for {
+    length <- Gen.chooseNum(6, 8)
+    chars  <- Gen.listOfN(length, Gen.numChar)
+  } yield chars.mkString("")).sample.value
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerAdopting()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_2")).click()
+    driver.findElement(By.id("accountName")).sendKeys("Mx F Bar")
+    driver.findElement(By.id("sortCode")).sendKeys(sortCode)
+    driver.findElement(By.id("accountNumber")).sendKeys(accountNumber)
     continue()
   }
 }

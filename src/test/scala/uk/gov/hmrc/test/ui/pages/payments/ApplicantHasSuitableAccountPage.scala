@@ -14,25 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.child
+package uk.gov.hmrc.test.ui.pages.payments
 
-import org.openqa.selenium.By
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-final case class ApplicantRelationshipToChildPage(index: Int) extends BasePage {
+object ApplicantHasSuitableAccountPage extends BasePage with BooleanPage {
 
-  override val url: String = s"your-relationship-to-child/$index"
-
-  def answer()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerAdopting()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_2")).click()
-    continue()
-  }
+  override val url: String = "have-suitable-bank-account"
 }
