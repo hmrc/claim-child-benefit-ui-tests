@@ -19,12 +19,24 @@ package uk.gov.hmrc.test.ui.pages.income
 import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
+import scala.collection.JavaConverters._
 
 object ApplicantOrPartnerBenefitsPage extends BasePage {
 
   override val url: String = "your-or-your-partners-benefits"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answerUniversalCredit()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_4")).click()
+    continue()
+  }
+
+  def uncheckAnswers()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElements(By.xpath("//input[@type = 'checkbox' and @checked]")).asScala.foreach(_.click())
+  }
+
+  def answerNoBenefits()(implicit pos: Position): Unit = {
     onPage()
     driver.findElement(By.id("value_5")).click()
     continue()

@@ -34,4 +34,16 @@ object RelationshipStatusPage extends BasePage {
     driver.findElement(By.id("value_0")).click()
     continue()
   }
+
+  def answerCohabiting()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_1")).click()
+    continue()
+  }
+
+  def answerSeparated()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_3")).click()
+    continue()
+  }
 }

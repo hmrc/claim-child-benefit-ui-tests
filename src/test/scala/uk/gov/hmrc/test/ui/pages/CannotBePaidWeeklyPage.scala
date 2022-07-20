@@ -16,16 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.income.ApplicantOrPartnerBenefitsPage
+object CannotBePaidWeeklyPage extends BasePage {
 
-object CheckYourAnswersPage extends BasePage {
-
-  override val url: String = s"check-your-answers"
-
-  def changeBenefits()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.xpath(s"//a[contains(@href, '${ApplicantOrPartnerBenefitsPage.url}')]")).click()
-  }
+  override val url: String = "cannot-be-paid-weekly"
 }
