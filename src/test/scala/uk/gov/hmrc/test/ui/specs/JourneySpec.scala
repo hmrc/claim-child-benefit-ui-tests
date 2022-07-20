@@ -186,6 +186,41 @@ class JourneySpec extends BaseSpec {
     }
   }
 
+  Feature("Extra page journeys") {
+
+    Scenario("A person cohabiting with a partner", ZapTests) {
+
+      Given("I am on the 'Relationship type' page")
+      StartPage.loadPage()
+      StartPage.startNow()
+      LivedOrWorkedOutsideUkPage.answerNo()
+      AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+
+      When("I answer that I am cohabiting with a partner")
+      RelationshipStatusPage.answerCohabiting()
+
+      Then("I must be shown the 'Cohabiting start date' page")
+      CohabitingDatePage.onPage()
+    }
+
+    Scenario("A person who is separated", ZapTests) {
+
+      Given("I am on the 'Relationship type' page")
+      StartPage.loadPage()
+      StartPage.startNow()
+      LivedOrWorkedOutsideUkPage.answerNo()
+      AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+
+      When("I answer that I am separated")
+      RelationshipStatusPage.answerSeparated()
+
+      Then("I must be shown the 'Separation date' page")
+      SeparationDatePage.onPage()
+    }
+  }
+
   Feature("Kick-out journeys") {
 
     Scenario("Myself or my partner have previously lived or worked outside the UK", ZapTests) {
