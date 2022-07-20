@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.specs
 
 import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.income.ApplicantOrPartnerBenefitsPage
 import uk.gov.hmrc.test.ui.specs.tags.ZapTests
 
 class JourneySpec extends BaseSpec {
@@ -113,7 +114,7 @@ class JourneySpec extends BaseSpec {
 
       CheckYourAnswersPage.onPage()
 
-      Then("I should be able to download the PDF")
+      Then("I must be able to download the PDF")
       // TODO
     }
 
@@ -137,7 +138,7 @@ class JourneySpec extends BaseSpec {
 
       income.ApplicantOrPartnerIncomeOver50kPage.answerYes()
       income.ApplicantOrPartnerIncomeOver60kPage.answerNo()
-      income.ApplicantOrPartnerBenefitsPage.answer()
+      income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
       income.TaxChargeExplanationPage.continue()
 
       payments.ClaimedChildBenefitBeforePage.answerYes()
@@ -181,7 +182,7 @@ class JourneySpec extends BaseSpec {
 
       CheckYourAnswersPage.onPage()
 
-      Then("I should be able to download the PDF")
+      Then("I must be able to download the PDF")
       // TODO
     }
   }
@@ -219,6 +220,73 @@ class JourneySpec extends BaseSpec {
       Then("I must be shown the 'Separation date' page")
       SeparationDatePage.onPage()
     }
+
+    Scenario(
+      "A person who initially indicates they want to be paid weekly, but who changes their answers so that they would be ineligible to be paid weekly",
+      ZapTests
+    ) {
+
+      Given("I am on the start page")
+      StartPage.loadPage()
+
+      When("I complete the journey")
+      StartPage.startNow()
+      LivedOrWorkedOutsideUkPage.answerNo()
+      AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+      RelationshipStatusPage.answerMarried()
+
+      income.ApplicantOrPartnerIncomeOver50kPage.answerYes()
+      income.ApplicantOrPartnerIncomeOver60kPage.answerNo()
+      income.ApplicantOrPartnerBenefitsPage.answerUniversalCredit()
+      income.TaxChargeExplanationPage.continue()
+
+      payments.ClaimedChildBenefitBeforePage.answerNo()
+      payments.WantToBePaidPage.answerYes()
+      payments.WantToBePaidWeeklyPage.answerYes()
+      payments.ApplicantHasSuitableAccountPage.answerYes()
+      payments.BankAccountDetailsPage.answer()
+
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantDateOfBirthPage.answer()
+      applicant.ApplicantCurrentAddressPage.answer()
+      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
+      applicant.ApplicantPhoneNumberPage.answer()
+      applicant.BestTimeToContactPage.answer()
+      applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantEmploymentStatusPage.answer()
+
+      partner.PartnerNamePage.answer()
+      partner.PartnerNinoKnownPage.answerYes()
+      partner.PartnerNinoPage.answer()
+      partner.PartnerDateOfBirthPage.answer()
+      partner.PartnerNationalityPage.answer()
+      partner.PartnerEmploymentStatusPage.answer()
+      partner.PartnerEntitledToChildBenefitPage.answerNo()
+      partner.PartnerWaitingForEntitlementDecisionPage.answerYes()
+      partner.PartnerEldestChildName.answer()
+      partner.PartnerEldestChildDateOfBirthPage.answer()
+
+      child.ChildNamePage(1).answer()
+      child.ChildHasPreviousNamePage(1).answerNo()
+      child.ChildBiologicalSexPage(1).answer()
+      child.ChildDateOfBirthPage(1).answer()
+      child.ChildBirthRegistrationCountryPage(1).answerEngland()
+      child.ChildBirthCertificateSystemNumberPage(1).answer()
+      child.ApplicantRelationshipToChildPage(1).answer()
+      child.AnyoneClaimedForChildBeforePage(1).answerNo()
+      child.CheckChildDetailsPage(1).continue()
+      child.AddChildPage.answerNo()
+
+      Then("I change my answers to indicate do not receive any benefits")
+      CheckYourAnswersPage.changeBenefits()
+      ApplicantOrPartnerBenefitsPage.uncheckAnswers()
+      ApplicantOrPartnerBenefitsPage.answerNoBenefits()
+
+      Then("I must be shown the 'You cannot be paid weekly' page")
+      CannotBePaidWeeklyPage.onPage()
+    }
   }
 
   Feature("Kick-out journeys") {
@@ -232,7 +300,7 @@ class JourneySpec extends BaseSpec {
       StartPage.startNow()
       LivedOrWorkedOutsideUkPage.answerYes()
 
-      Then("I should be shown the kick-out page")
+      Then("I must be shown the kick-out page")
       UsePrintAndPostFormPage.onPage()
     }
 
@@ -251,7 +319,7 @@ class JourneySpec extends BaseSpec {
       And("I say that one of the children I am applying for has lived with someone else in the last 12 months")
       AnyChildLivedWithOthersPage.answerYes()
 
-      Then("I should be shown the kick-out page")
+      Then("I must be shown the kick-out page")
       UsePrintAndPostFormPage.onPage()
     }
   }

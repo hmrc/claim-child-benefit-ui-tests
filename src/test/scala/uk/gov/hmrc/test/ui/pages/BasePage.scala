@@ -30,5 +30,5 @@ trait BasePage extends BrowserDriver with Matchers {
     driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
 
   def onPage()(implicit pos: Position): Unit =
-    driver.getCurrentUrl mustEqual s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url"
+    driver.getCurrentUrl must startWith(s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url")
 }
