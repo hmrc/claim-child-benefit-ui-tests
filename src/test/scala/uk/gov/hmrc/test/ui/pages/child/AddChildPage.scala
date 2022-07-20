@@ -16,9 +16,18 @@
 
 package uk.gov.hmrc.test.ui.pages.child
 
+import org.openqa.selenium.By
+import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-object AddChildPage extends BasePage with BooleanPage {
+import scala.collection.JavaConverters._
+
+object AddChildPage extends BasePage with BooleanPage with OptionValues {
 
   override val url: String = s"add-child"
+
+  def remove(index: Int): Unit = {
+    onPage()
+    driver.findElements(By.xpath("//a[*/text() = 'Remove']")).asScala.lift(index - 1).value.click()
+  }
 }

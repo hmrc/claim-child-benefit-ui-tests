@@ -14,31 +14,22 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.child
+package uk.gov.hmrc.test.ui.pages.payments
 
-import org.openqa.selenium.By
 import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.{BasePage, DatePage}
 
-final case class ChildBirthRegistrationCountryPage(index: Int) extends BasePage {
+import java.time.LocalDate
 
-  override val url: String = s"child-birth-registration-country/$index"
+object EldestChildDateOfBirthPage extends BasePage with DatePage {
 
-  def answerEngland()(implicit pos: Position): Unit = {
+  override val url: String = "eldest-child-date-of-birth"
+
+  private lazy val dob: LocalDate = LocalDate.now.minusYears(10)
+
+  def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerScotland()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_1")).click()
-    continue()
-  }
-
-  def answerOther()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_3")).click()
+    answerDate(dob)
     continue()
   }
 }

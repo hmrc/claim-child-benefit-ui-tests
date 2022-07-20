@@ -30,10 +30,14 @@ trait BaseSpec
     extends AnyFeatureSpec
     with GivenWhenThen
     with BeforeAndAfterAll
+    with BeforeAndAfterEach
     with Matchers
     with WebBrowser
     with BrowserDriver
     with Eventually {
+
+  override def afterEach(): Unit =
+    driver.manage().deleteAllCookies()
 
   override def afterAll() {
     Try(SingletonDriver.closeInstance)

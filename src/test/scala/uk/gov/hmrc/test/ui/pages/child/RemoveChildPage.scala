@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages.child
 
 import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-final case class ChildNameChangedByDeedPoll(index: Int) extends BasePage with BooleanPage {
+final case class RemoveChildPage(index: Int) extends BasePage with BooleanPage {
 
-  override val url: String = s"child-name-changed-by-deed-poll/$index"
+  override val url: String = s"remove-child/$index"
 }

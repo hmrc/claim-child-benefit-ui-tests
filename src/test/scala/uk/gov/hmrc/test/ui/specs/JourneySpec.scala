@@ -26,15 +26,14 @@ class JourneySpec extends BaseSpec {
     Scenario(
       """Single parent journey,
         |earning over £50kpa,
-        |who does not currently receive CHB,
-        |who wants to be paid into a single bank account""".stripMargin,
+        |who does not currently receive CHB""".stripMargin,
       ZapTests
     ) {
 
       Given("I am on the start page")
       StartPage.loadPage()
 
-      When("I complete the simplest journey")
+      When("I complete the journey")
       StartPage.startNow()
       LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
@@ -81,7 +80,7 @@ class JourneySpec extends BaseSpec {
       child.AddChildPage.answerYes()
       child.ChildNamePage(2).answer()
       child.ChildHasPreviousNamePage(2).answerYes()
-      child.ChildNameChangedByDeedPoll(2).answerYes()
+      child.ChildNameChangedByDeedPollPage(2).answerYes()
       child.ChildPreviousNamePage(2, 1).answer()
       child.AddChildPreviousNamePage(2).remove(1)
       child.RemoveChildPreviousNamePage(2, 1).answerNo()
@@ -96,6 +95,88 @@ class JourneySpec extends BaseSpec {
       child.PreviousClaimantNamePage(2).answer()
       child.PreviousClaimantAddressPage(2).answer()
       child.CheckChildDetailsPage(2).continue()
+
+      child.AddChildPage.answerYes()
+      child.ChildNamePage(3).answer()
+      child.ChildHasPreviousNamePage(3).answerNo()
+      child.ChildBiologicalSexPage(3).answer()
+      child.ChildDateOfBirthPage(3).answer()
+      child.ChildBirthRegistrationCountryPage(3).answerOther()
+      child.ApplicantRelationshipToChildPage(3).answer()
+      child.AnyoneClaimedForChildBeforePage(3).answerNo()
+      child.IncludedDocumentsPage(3).answer()
+      child.CheckChildDetailsPage(3).continue()
+
+      child.AddChildPage.remove(1)
+      child.RemoveChildPage(1).answerNo()
+      child.AddChildPage.answerNo()
+
+      CheckYourAnswersPage.onPage()
+
+      Then("I should be able to download the PDF")
+      // TODO
+    }
+
+    Scenario(
+      """Married parent journey
+        |who earns over £50kpa,
+        |who already receives CHB
+        |""".stripMargin,
+      ZapTests
+    ) {
+
+      Given("I am on the start page")
+      StartPage.loadPage()
+
+      When("I complete the journey")
+      StartPage.startNow()
+      LivedOrWorkedOutsideUkPage.answerNo()
+      AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+      RelationshipStatusPage.answerMarried()
+
+      income.ApplicantOrPartnerIncomeOver50kPage.answerYes()
+      income.ApplicantOrPartnerIncomeOver60kPage.answerNo()
+      income.ApplicantOrPartnerBenefitsPage.answer()
+      income.TaxChargeExplanationPage.continue()
+
+      payments.ClaimedChildBenefitBeforePage.answerYes()
+      payments.CurrentlyEntitledToChildBenefitPage.answerYes()
+      payments.CurrentlyReceivingChildBenefitPage.answerYes()
+      payments.EldestChildNamePage.answer()
+      payments.EldestChildDateOfBirthPage.answer()
+      payments.WantToBePaidToExistingAccountPage.answerYes()
+
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantDateOfBirthPage.answer()
+      applicant.ApplicantCurrentAddressPage.answer()
+      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
+      applicant.ApplicantPhoneNumberPage.answer()
+      applicant.BestTimeToContactPage.answer()
+      applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantEmploymentStatusPage.answer()
+
+      partner.PartnerNamePage.answer()
+      partner.PartnerNinoKnownPage.answerYes()
+      partner.PartnerNinoPage.answer()
+      partner.PartnerDateOfBirthPage.answer()
+      partner.PartnerNationalityPage.answer()
+      partner.PartnerEmploymentStatusPage.answer()
+      partner.PartnerEntitledToChildBenefitPage.answerNo()
+      partner.PartnerWaitingForEntitlementDecisionPage.answerYes()
+      partner.PartnerEldestChildName.answer()
+      partner.PartnerEldestChildDateOfBirthPage.answer()
+
+      child.ChildNamePage(1).answer()
+      child.ChildHasPreviousNamePage(1).answerNo()
+      child.ChildBiologicalSexPage(1).answer()
+      child.ChildDateOfBirthPage(1).answer()
+      child.ChildBirthRegistrationCountryPage(1).answerEngland()
+      child.ChildBirthCertificateSystemNumberPage(1).answer()
+      child.ApplicantRelationshipToChildPage(1).answer()
+      child.AnyoneClaimedForChildBeforePage(1).answerNo()
+      child.CheckChildDetailsPage(1).continue()
       child.AddChildPage.answerNo()
 
       CheckYourAnswersPage.onPage()

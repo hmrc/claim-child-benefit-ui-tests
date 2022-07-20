@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.applicant
+package uk.gov.hmrc.test.ui.pages.partner
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, NinoPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-object ApplicantNinoPage extends BasePage with NinoPage {
+object PartnerEntitledToChildBenefitPage extends BasePage with BooleanPage {
 
-  override val url: String = "your-national-insurance-number"
+  override val url: String = "partner-currently-entitled-to-child-benefit"
 }

@@ -14,31 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.child
+package uk.gov.hmrc.test.ui.pages.income
 
 import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-final case class ChildBirthRegistrationCountryPage(index: Int) extends BasePage {
+object ApplicantOrPartnerBenefitsPage extends BasePage {
 
-  override val url: String = s"child-birth-registration-country/$index"
+  override val url: String = "your-or-your-partners-benefits"
 
-  def answerEngland()(implicit pos: Position): Unit = {
+  def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerScotland()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_1")).click()
-    continue()
-  }
-
-  def answerOther()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_3")).click()
+    driver.findElement(By.id("value_5")).click()
     continue()
   }
 }

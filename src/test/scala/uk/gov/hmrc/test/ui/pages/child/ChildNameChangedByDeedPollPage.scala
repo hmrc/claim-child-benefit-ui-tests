@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.applicant
+package uk.gov.hmrc.test.ui.pages.child
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, NinoPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-object ApplicantNinoPage extends BasePage with NinoPage {
+final case class ChildNameChangedByDeedPollPage(index: Int) extends BasePage with BooleanPage {
 
-  override val url: String = "your-national-insurance-number"
+  override val url: String = s"child-name-changed-by-deed-poll/$index"
 }
