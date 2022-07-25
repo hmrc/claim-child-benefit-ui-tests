@@ -18,5 +18,5 @@ package uk.gov.hmrc.test.ui.pages
 
 object CannotBePaidWeeklyPage extends BasePage {
 
-  override val url: String = "cannot-be-paid-weekly"
+  override val url: String = "not-eligible-for-weekly-payments"
 }
