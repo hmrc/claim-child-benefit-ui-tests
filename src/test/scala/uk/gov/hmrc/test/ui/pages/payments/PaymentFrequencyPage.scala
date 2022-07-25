@@ -16,9 +16,23 @@
 
 package uk.gov.hmrc.test.ui.pages.payments
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
+import org.openqa.selenium.By
+import org.scalactic.source.Position
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-object WantToBePaidWeeklyPage extends BasePage with BooleanPage {
+object PaymentFrequencyPage extends BasePage {
 
-  override val url: String = "want-to-be-paid-weekly"
+  override val url: String = "how-often-want-to-be-paid"
+
+  def answerWeekly()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_0")).click()
+    continue()
+  }
+
+  def answerEveryFourWeeks()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_1")).click()
+    continue()
+  }
 }
