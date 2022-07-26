@@ -29,8 +29,7 @@ object BankAccountDetailsPage extends BasePage with OptionValues {
   private lazy val sortCode: String = Gen.listOfN(6, Gen.numChar).map(_.mkString("")).sample.value
 
   private lazy val accountNumber: String = (for {
-    length <- Gen.chooseNum(5, 7)
-    chars  <- Gen.listOfN(length, Gen.numChar)
+    chars <- Gen.listOfN(7, Gen.numChar)
   } yield ('9' +: chars).mkString("")).sample.value
 
   def answer()(implicit pos: Position): Unit = {
