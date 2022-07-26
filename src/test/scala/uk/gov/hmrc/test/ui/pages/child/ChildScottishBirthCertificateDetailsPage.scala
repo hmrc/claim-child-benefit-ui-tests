@@ -28,11 +28,11 @@ final case class ChildScottishBirthCertificateDetailsPage(index: Int) extends Ba
 
   override val url: String = s"child-scottish-birth-certificate-details/$index"
 
-  private lazy val value: String = Gen.listOfN(10, Gen.numChar).map(_.mkString("")).sample.value
+  private lazy val birthCertificateNumber: String = Gen.listOfN(10, Gen.numChar).map(_.mkString("")).sample.value
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value")).sendKeys(value)
+    driver.findElement(By.id("value")).sendKeys(birthCertificateNumber)
     continue()
   }
 }
