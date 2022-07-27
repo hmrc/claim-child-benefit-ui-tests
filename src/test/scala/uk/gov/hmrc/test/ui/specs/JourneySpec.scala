@@ -46,7 +46,7 @@ class JourneySpec extends BaseSpec {
       income.ApplicantBenefitsPage.answer()
       income.TaxChargeExplanationPage.continue()
 
-      payments.ClaimedChildBenefitBeforePage.answerNo()
+      payments.CurrentlyReceivingChildBenefitPage.answerNo()
       payments.WantToBePaidPage.answerYes()
       payments.PaymentFrequencyPage.answerEveryFourWeeks()
       payments.ApplicantHasSuitableAccountPage.answerYes()
@@ -141,8 +141,6 @@ class JourneySpec extends BaseSpec {
       income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
       income.TaxChargeExplanationPage.continue()
 
-      payments.ClaimedChildBenefitBeforePage.answerYes()
-      payments.CurrentlyEntitledToChildBenefitPage.answerYes()
       payments.CurrentlyReceivingChildBenefitPage.answerYes()
       payments.EldestChildNamePage.answer()
       payments.EldestChildDateOfBirthPage.answer()
@@ -241,7 +239,7 @@ class JourneySpec extends BaseSpec {
       income.ApplicantOrPartnerBenefitsPage.answerUniversalCredit()
       income.TaxChargeExplanationPage.continue()
 
-      payments.ClaimedChildBenefitBeforePage.answerNo()
+      payments.CurrentlyReceivingChildBenefitPage.answerNo()
       payments.WantToBePaidPage.answerYes()
       payments.PaymentFrequencyPage.answerWeekly()
       payments.ApplicantHasSuitableAccountPage.answerYes()
