@@ -75,6 +75,7 @@ class JourneySpec extends BaseSpec {
       child.ChildBirthRegistrationCountryPage(1).answerEngland()
       child.ChildBirthCertificateSystemNumberPage(1).answer()
       child.ApplicantRelationshipToChildPage(1).answer()
+      child.AdoptingThroughLocalAuthorityPage(1).answerNo()
       child.AnyoneClaimedForChildBeforePage(1).answerNo()
       child.CheckChildDetailsPage(1).continue()
 
@@ -104,8 +105,8 @@ class JourneySpec extends BaseSpec {
       child.ChildDateOfBirthPage(3).answer()
       child.ChildBirthRegistrationCountryPage(3).answerOther()
       child.ApplicantRelationshipToChildPage(3).answer()
+      child.AdoptingThroughLocalAuthorityPage(3).answerNo()
       child.AnyoneClaimedForChildBeforePage(3).answerNo()
-      child.IncludedDocumentsPage(3).answer()
       child.CheckChildDetailsPage(3).continue()
 
       child.AddChildPage.remove(1)
@@ -174,6 +175,7 @@ class JourneySpec extends BaseSpec {
       child.ChildBirthRegistrationCountryPage(1).answerEngland()
       child.ChildBirthCertificateSystemNumberPage(1).answer()
       child.ApplicantRelationshipToChildPage(1).answer()
+      child.AdoptingThroughLocalAuthorityPage(1).answerNo()
       child.AnyoneClaimedForChildBeforePage(1).answerNo()
       child.CheckChildDetailsPage(1).continue()
       child.AddChildPage.answerNo()
@@ -273,6 +275,7 @@ class JourneySpec extends BaseSpec {
       child.ChildBirthRegistrationCountryPage(1).answerEngland()
       child.ChildBirthCertificateSystemNumberPage(1).answer()
       child.ApplicantRelationshipToChildPage(1).answer()
+      child.AdoptingThroughLocalAuthorityPage(1).answerNo()
       child.AnyoneClaimedForChildBeforePage(1).answerNo()
       child.CheckChildDetailsPage(1).continue()
       child.AddChildPage.answerNo()
