@@ -67,6 +67,7 @@ class JourneySpec extends BaseSpec {
       applicant.BestTimeToContactPage.answer()
       applicant.ApplicantNationalityPage.answer()
       applicant.ApplicantEmploymentStatusPage.answer()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
 
       child.ChildNamePage(1).answer()
       child.ChildHasPreviousNamePage(1).answerNo()
@@ -156,6 +157,7 @@ class JourneySpec extends BaseSpec {
       applicant.BestTimeToContactPage.answer()
       applicant.ApplicantNationalityPage.answer()
       applicant.ApplicantEmploymentStatusPage.answer()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerYes()
 
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
@@ -163,6 +165,7 @@ class JourneySpec extends BaseSpec {
       partner.PartnerDateOfBirthPage.answer()
       partner.PartnerNationalityPage.answer()
       partner.PartnerEmploymentStatusPage.answer()
+      partner.PartnerIsHmfOrCivilServantPage.answerNo()
       partner.PartnerEntitledToChildBenefitPage.answerNo()
       partner.PartnerWaitingForEntitlementDecisionPage.answerYes()
       partner.PartnerEldestChildName.answer()
@@ -256,6 +259,7 @@ class JourneySpec extends BaseSpec {
       applicant.BestTimeToContactPage.answer()
       applicant.ApplicantNationalityPage.answer()
       applicant.ApplicantEmploymentStatusPage.answer()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
 
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
@@ -263,6 +267,7 @@ class JourneySpec extends BaseSpec {
       partner.PartnerDateOfBirthPage.answer()
       partner.PartnerNationalityPage.answer()
       partner.PartnerEmploymentStatusPage.answer()
+      partner.PartnerIsHmfOrCivilServantPage.answerYes()
       partner.PartnerEntitledToChildBenefitPage.answerNo()
       partner.PartnerWaitingForEntitlementDecisionPage.answerYes()
       partner.PartnerEldestChildName.answer()
