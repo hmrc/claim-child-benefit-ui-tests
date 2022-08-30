@@ -25,13 +25,13 @@ object RelationshipStatusPage extends BasePage {
 
   def answerSingle()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value_5")).click()
+    driver.findElement(By.id("value_4")).click()
     continue()
   }
 
   def answerMarried()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value_0")).click()
+    driver.findElement(By.id("value_2")).click()
     continue()
   }
 
