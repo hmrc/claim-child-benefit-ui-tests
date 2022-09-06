@@ -36,6 +36,7 @@ class JourneySpec extends BaseSpec {
 
       When("I complete the journey")
       StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
       LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
@@ -134,6 +135,7 @@ class JourneySpec extends BaseSpec {
 
       When("I complete the journey")
       StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
       LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
@@ -197,6 +199,7 @@ class JourneySpec extends BaseSpec {
       Given("I am on the 'Relationship type' page")
       StartPage.loadPage()
       StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
       LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
@@ -213,6 +216,7 @@ class JourneySpec extends BaseSpec {
       Given("I am on the 'Relationship type' page")
       StartPage.loadPage()
       StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
       LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
@@ -234,6 +238,7 @@ class JourneySpec extends BaseSpec {
 
       When("I complete the journey")
       StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
       LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
@@ -296,6 +301,19 @@ class JourneySpec extends BaseSpec {
 
   Feature("Kick-out journeys") {
 
+    Scenario("I have recently claimed Child Benefit", ZapTests) {
+
+      Given("I am on the start page")
+      StartPage.loadPage()
+
+      When("I say that I have recently claimed Child Benefit")
+      StartPage.startNow()
+      RecentlyClaimedPage.answerYes()
+
+      Then("I must be shown the already claimed page")
+      AlreadyClaimedPage.onPage()
+    }
+
     Scenario("Myself or my partner have previously lived or worked outside the UK", ZapTests) {
 
       Given("I am on the start page")
@@ -303,6 +321,7 @@ class JourneySpec extends BaseSpec {
 
       When("I say that me, or my partner have previously lived or worked outside the UK")
       StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
       LivedOrWorkedOutsideUkPage.answerYes()
 
       Then("I must be shown the kick-out page")
@@ -317,11 +336,10 @@ class JourneySpec extends BaseSpec {
       Given("I am on the start page")
       StartPage.loadPage()
 
-      When("I say that me and my partner have never lived or worked outside the UK")
+      When("I say that one of the children I am applying for has lived with someone else in the last 12 months")
       StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
       LivedOrWorkedOutsideUkPage.answerNo()
-
-      And("I say that one of the children I am applying for has lived with someone else in the last 12 months")
       AnyChildLivedWithOthersPage.answerYes()
 
       Then("I must be shown the kick-out page")
