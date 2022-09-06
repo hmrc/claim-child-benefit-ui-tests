@@ -41,8 +41,7 @@ class JourneySpec extends BaseSpec {
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerSingle()
 
-      income.ApplicantIncomeOver50kPage.answerYes()
-      income.ApplicantIncomeOver60kPage.answerNo()
+      income.ApplicantIncomePage.answer()
       income.ApplicantBenefitsPage.answer()
       income.TaxChargeExplanationPage.continue()
 
@@ -140,8 +139,7 @@ class JourneySpec extends BaseSpec {
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerMarried()
 
-      income.ApplicantOrPartnerIncomeOver50kPage.answerYes()
-      income.ApplicantOrPartnerIncomeOver60kPage.answerNo()
+      income.ApplicantOrPartnerIncomePage.answer()
       income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
       income.TaxChargeExplanationPage.continue()
 
@@ -241,8 +239,7 @@ class JourneySpec extends BaseSpec {
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerMarried()
 
-      income.ApplicantOrPartnerIncomeOver50kPage.answerYes()
-      income.ApplicantOrPartnerIncomeOver60kPage.answerNo()
+      income.ApplicantOrPartnerIncomePage.answer()
       income.ApplicantOrPartnerBenefitsPage.answerUniversalCredit()
       income.TaxChargeExplanationPage.continue()
 
