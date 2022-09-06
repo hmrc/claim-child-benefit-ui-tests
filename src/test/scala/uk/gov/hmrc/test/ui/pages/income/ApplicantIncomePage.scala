@@ -16,9 +16,17 @@
 
 package uk.gov.hmrc.test.ui.pages.income
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
+import org.openqa.selenium.By
+import org.scalactic.source.Position
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-object ApplicantIncomeOver50kPage extends BasePage with BooleanPage {
+object ApplicantIncomePage extends BasePage {
 
-  override val url: String = "your-income-over-50k"
+  override val url: String = "your-income"
+
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_1")).click()
+    continue()
+  }
 }
