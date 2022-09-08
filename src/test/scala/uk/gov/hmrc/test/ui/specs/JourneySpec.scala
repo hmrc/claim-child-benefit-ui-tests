@@ -37,10 +37,10 @@ class JourneySpec extends BaseSpec {
       When("I complete the journey")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerSingle()
+      LivedOrWorkedOutsideUkPage.answerNo()
 
       income.ApplicantIncomePage.answer()
       income.ApplicantBenefitsPage.answer()
@@ -135,10 +135,10 @@ class JourneySpec extends BaseSpec {
       When("I complete the journey")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerMarried()
+      LivedOrWorkedOutsideUkPage.answerNo()
 
       income.ApplicantOrPartnerIncomePage.answer()
       income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
@@ -165,7 +165,6 @@ class JourneySpec extends BaseSpec {
       partner.PartnerDateOfBirthPage.answer()
       partner.PartnerNationalityPage.answer()
       partner.PartnerEmploymentStatusPage.answer()
-      partner.PartnerIsHmfOrCivilServantPage.answerNo()
       partner.PartnerEntitledToChildBenefitPage.answerNo()
       partner.PartnerWaitingForEntitlementDecisionPage.answerYes()
       partner.PartnerEldestChildName.answer()
@@ -198,7 +197,6 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
 
@@ -215,7 +213,6 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
 
@@ -232,13 +229,37 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+      RelationshipStatusPage.answerSingle()
       LivedOrWorkedOutsideUkPage.answerYes()
 
       When("I answer that I am a civil servant")
       applicant.ApplicantIsHmfOrCivilServantPage.answerYes()
 
       Then("I must continue with the journey")
-      AnyChildLivedWithOthersPage.onPage()
+      income.ApplicantIncomePage.onPage()
+    }
+
+    Scenario("A person whose partner is HM Forces or a civil servant abroad", ZapTests) {
+
+      Given("I answer that I have lived outside the UK in the last 3 months")
+      StartPage.loadPage()
+      StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
+      AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+      RelationshipStatusPage.answerMarried()
+      LivedOrWorkedOutsideUkPage.answerYes()
+
+      When("I answer that I am not a civil servant")
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
+
+      And("I answer that my partner is HM Forces or a civil servant abroad")
+      partner.PartnerIsHmfOrCivilServantPage.answerYes()
+
+      Then("I must continue with the journey")
+      income.ApplicantOrPartnerIncomePage.onPage()
     }
 
     Scenario(
@@ -252,10 +273,10 @@ class JourneySpec extends BaseSpec {
       When("I complete the journey")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerMarried()
+      LivedOrWorkedOutsideUkPage.answerNo()
 
       income.ApplicantOrPartnerIncomePage.answer()
       income.ApplicantOrPartnerBenefitsPage.answerUniversalCredit()
@@ -283,7 +304,6 @@ class JourneySpec extends BaseSpec {
       partner.PartnerDateOfBirthPage.answer()
       partner.PartnerNationalityPage.answer()
       partner.PartnerEmploymentStatusPage.answer()
-      partner.PartnerIsHmfOrCivilServantPage.answerYes()
       partner.PartnerEntitledToChildBenefitPage.answerNo()
       partner.PartnerWaitingForEntitlementDecisionPage.answerYes()
       partner.PartnerEldestChildName.answer()
@@ -326,21 +346,6 @@ class JourneySpec extends BaseSpec {
       AlreadyClaimedPage.onPage()
     }
 
-    Scenario("Myself or my partner have previously lived or worked outside the UK and are not HM Forces or a civil servant abroad", ZapTests) {
-
-      Given("I am on the start page")
-      StartPage.loadPage()
-
-      When("I say that me, or my partner have previously lived or worked outside the UK")
-      StartPage.startNow()
-      RecentlyClaimedPage.answerNo()
-      LivedOrWorkedOutsideUkPage.answerYes()
-      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
-
-      Then("I must be shown the kick-out page")
-      UsePrintAndPostFormPage.onPage()
-    }
-
     Scenario(
       "At least one of the children I am applying for has lived with someone else in the last 12 months",
       ZapTests
@@ -352,8 +357,50 @@ class JourneySpec extends BaseSpec {
       When("I say that one of the children I am applying for has lived with someone else in the last 12 months")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      LivedOrWorkedOutsideUkPage.answerNo()
       AnyChildLivedWithOthersPage.answerYes()
+
+      Then("I must be shown the kick-out page")
+      UsePrintAndPostFormPage.onPage()
+    }
+
+    Scenario(
+      "I have previously lived or worked outside the UK and am not HM Forces or a civil servant abroad",
+      ZapTests
+    ) {
+
+      Given("I am on the start page")
+      StartPage.loadPage()
+
+      When("I say that I have previously lived or worked outside the UK")
+      StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
+      AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+      RelationshipStatusPage.answerSingle()
+      LivedOrWorkedOutsideUkPage.answerYes()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
+
+      Then("I must be shown the kick-out page")
+      UsePrintAndPostFormPage.onPage()
+    }
+
+    Scenario(
+      "I have previously lived or worked outside the UK and neither me nor my partner are HM Forces or a civil servant abroad",
+      ZapTests
+    ) {
+
+      Given("I am on the start page")
+      StartPage.loadPage()
+
+      When("I say that I have previously lived or worked outside the UK")
+      StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
+      AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+      RelationshipStatusPage.answerMarried()
+      LivedOrWorkedOutsideUkPage.answerYes()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
+      partner.PartnerIsHmfOrCivilServantPage.answerNo()
 
       Then("I must be shown the kick-out page")
       UsePrintAndPostFormPage.onPage()
