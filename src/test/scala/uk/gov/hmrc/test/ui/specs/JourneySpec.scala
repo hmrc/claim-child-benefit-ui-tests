@@ -67,7 +67,6 @@ class JourneySpec extends BaseSpec {
       applicant.BestTimeToContactPage.answer()
       applicant.ApplicantNationalityPage.answer()
       applicant.ApplicantEmploymentStatusPage.answer()
-      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
 
       child.ChildNamePage(1).answer()
       child.ChildHasPreviousNamePage(1).answerNo()
@@ -159,7 +158,6 @@ class JourneySpec extends BaseSpec {
       applicant.BestTimeToContactPage.answer()
       applicant.ApplicantNationalityPage.answer()
       applicant.ApplicantEmploymentStatusPage.answer()
-      applicant.ApplicantIsHmfOrCivilServantPage.answerYes()
 
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
@@ -228,6 +226,21 @@ class JourneySpec extends BaseSpec {
       SeparationDatePage.onPage()
     }
 
+    Scenario("A person who is HM Forces or a civil servant abroad", ZapTests) {
+
+      Given("I answer that I have lived outside the UK in the last 3 months")
+      StartPage.loadPage()
+      StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
+      LivedOrWorkedOutsideUkPage.answerYes()
+
+      When("I answer that I am a civil servant")
+      applicant.ApplicantIsHmfOrCivilServantPage.answerYes()
+
+      Then("I must continue with the journey")
+      AnyChildLivedWithOthersPage.onPage()
+    }
+
     Scenario(
       "A person who initially indicates they want to be paid weekly, but who changes their answers so that they would be ineligible to be paid weekly",
       ZapTests
@@ -263,7 +276,6 @@ class JourneySpec extends BaseSpec {
       applicant.BestTimeToContactPage.answer()
       applicant.ApplicantNationalityPage.answer()
       applicant.ApplicantEmploymentStatusPage.answer()
-      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
 
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
@@ -314,7 +326,7 @@ class JourneySpec extends BaseSpec {
       AlreadyClaimedPage.onPage()
     }
 
-    Scenario("Myself or my partner have previously lived or worked outside the UK", ZapTests) {
+    Scenario("Myself or my partner have previously lived or worked outside the UK and are not HM Forces or a civil servant abroad", ZapTests) {
 
       Given("I am on the start page")
       StartPage.loadPage()
@@ -323,6 +335,7 @@ class JourneySpec extends BaseSpec {
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
       LivedOrWorkedOutsideUkPage.answerYes()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
 
       Then("I must be shown the kick-out page")
       UsePrintAndPostFormPage.onPage()
