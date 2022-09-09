@@ -20,9 +20,9 @@ import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-final case class PreviousClaimantAddressPage(index: Int) extends BasePage {
+final case class PreviousClaimantUkAddressPage(index: Int) extends BasePage {
 
-  override val url: String = s"previous-claimant-address/$index"
+  override val url: String = s"previous-claimant-uk-address/$index"
 
   def answer()(implicit pos: Position): Unit = {
     onPage()

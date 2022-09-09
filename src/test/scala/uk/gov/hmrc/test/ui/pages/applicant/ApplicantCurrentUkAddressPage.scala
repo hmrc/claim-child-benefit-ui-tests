@@ -20,15 +20,15 @@ import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-object ApplicantPreviousAddressPage extends BasePage {
+object ApplicantCurrentUkAddressPage extends BasePage {
 
-  override val url: String = "your-previous-address"
+  override val url: String = "your-current-uk-address"
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("line1")).sendKeys("2 Test Street")
+    driver.findElement(By.id("line1")).sendKeys("1 Test Street")
     driver.findElement(By.id("town")).sendKeys("Test Town")
-    driver.findElement(By.id("postcode")).sendKeys("ZZ2 1ZZ")
+    driver.findElement(By.id("postcode")).sendKeys("ZZ1 1ZZ")
     continue()
   }
 }
