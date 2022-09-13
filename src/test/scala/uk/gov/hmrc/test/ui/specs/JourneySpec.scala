@@ -62,6 +62,7 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantDateOfBirthPage.answer()
       applicant.ApplicantCurrentUkAddressPage.answer()
       applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerNo()
+      applicant.ApplicantPreviousAddressInUkPage.answerYes()
       applicant.ApplicantPreviousUkAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
       applicant.BestTimeToContactPage.answer()
@@ -97,6 +98,7 @@ class JourneySpec extends BaseSpec {
       child.AdoptingThroughLocalAuthorityPage(2).answerYes()
       child.AnyoneClaimedForChildBeforePage(2).answerYes()
       child.PreviousClaimantNamePage(2).answer()
+      child.PreviousClaimantAddressInUkPage(2).answerYes()
       child.PreviousClaimantUkAddressPage(2).answer()
       child.CheckChildDetailsPage(2).continue()
 
@@ -108,7 +110,10 @@ class JourneySpec extends BaseSpec {
       child.ChildBirthRegistrationCountryPage(3).answerOther()
       child.ApplicantRelationshipToChildPage(3).answer()
       child.AdoptingThroughLocalAuthorityPage(3).answerNo()
-      child.AnyoneClaimedForChildBeforePage(3).answerNo()
+      child.AnyoneClaimedForChildBeforePage(3).answerYes()
+      child.PreviousClaimantNamePage(3).answer()
+      child.PreviousClaimantAddressInUkPage(3).answerNo()
+      child.PreviousClaimantInternationalAddressPage(3).answer()
       child.CheckChildDetailsPage(3).continue()
 
       child.AddChildPage.remove(1)
@@ -153,7 +158,9 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantNinoKnownPage.answerNo()
       applicant.ApplicantDateOfBirthPage.answer()
       applicant.ApplicantCurrentUkAddressPage.answer()
-      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
+      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerNo()
+      applicant.ApplicantPreviousAddressInUkPage.answerNo()
+      applicant.ApplicantPreviousInternationalAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
       applicant.BestTimeToContactPage.answer()
       applicant.ApplicantNationalityPage.answer()
@@ -237,8 +244,20 @@ class JourneySpec extends BaseSpec {
       When("I answer that I am a civil servant")
       applicant.ApplicantIsHmfOrCivilServantPage.answerYes()
 
-      Then("I must continue with the journey")
-      income.ApplicantIncomePage.onPage()
+      And("I continue with the journey")
+      income.ApplicantIncomePage.answer()
+      income.ApplicantBenefitsPage.answer()
+      income.TaxChargeExplanationPage.continue()
+
+      payments.CurrentlyReceivingChildBenefitPage.answerNo()
+      payments.WantToBePaidPage.answerNo()
+
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantDateOfBirthPage.answer()
+
+      Then("I must be asked if my current address is in the UK")
+      applicant.ApplicantCurrentAddressInUkPage.onPage()
     }
 
     Scenario("A person whose partner is HM Forces or a civil servant abroad", ZapTests) {
@@ -258,8 +277,20 @@ class JourneySpec extends BaseSpec {
       And("I answer that my partner is HM Forces or a civil servant abroad")
       partner.PartnerIsHmfOrCivilServantPage.answerYes()
 
-      Then("I must continue with the journey")
-      income.ApplicantOrPartnerIncomePage.onPage()
+      And("I continue with the journey")
+      income.ApplicantOrPartnerIncomePage.answer()
+      income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
+      income.TaxChargeExplanationPage.continue()
+
+      payments.CurrentlyReceivingChildBenefitPage.answerNo()
+      payments.WantToBePaidPage.answerNo()
+
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantDateOfBirthPage.answer()
+
+      Then("I must be asked if my current address is in the UK")
+      applicant.ApplicantCurrentAddressInUkPage.onPage()
     }
 
     Scenario(

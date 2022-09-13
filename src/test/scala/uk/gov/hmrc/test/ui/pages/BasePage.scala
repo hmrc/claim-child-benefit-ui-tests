@@ -31,4 +31,9 @@ trait BasePage extends BrowserDriver with Matchers {
 
   def onPage()(implicit pos: Position): Unit =
     driver.getCurrentUrl must startWith(s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url")
+
+  def selectFromAutocomplete(inputId: String, data: String): Unit = {
+    driver.findElement(By.id(inputId)).sendKeys(data)
+    driver.findElement(By.cssSelector(s"li#${inputId}__option--0")).click()
+  }
 }
