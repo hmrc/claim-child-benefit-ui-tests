@@ -50,6 +50,7 @@ class JourneySpec extends BaseSpec {
       payments.WantToBePaidPage.answerYes()
       payments.PaymentFrequencyPage.answerEveryFourWeeks()
       payments.ApplicantHasSuitableAccountPage.answerYes()
+      payments.BankAccountHolderPage.answerApplicant()
       payments.BankAccountDetailsPage.answer()
 
       applicant.ApplicantHasPreviousFamilyNamePage.answerYes()
@@ -317,6 +318,7 @@ class JourneySpec extends BaseSpec {
       payments.WantToBePaidPage.answerYes()
       payments.PaymentFrequencyPage.answerWeekly()
       payments.ApplicantHasSuitableAccountPage.answerYes()
+      payments.BankAccountHolderPage.answerJoint()
       payments.BankAccountDetailsPage.answer()
 
       applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
