@@ -173,8 +173,7 @@ class JourneySpec extends BaseSpec {
       partner.PartnerDateOfBirthPage.answer()
       partner.PartnerNationalityPage.answer()
       partner.PartnerEmploymentStatusPage.answer()
-      partner.PartnerEntitledToChildBenefitPage.answerNo()
-      partner.PartnerWaitingForEntitlementDecisionPage.answerYes()
+      partner.PartnerClaimingChildBenefitPage.answerGettingPayments()
       partner.PartnerEldestChildName.answer()
       partner.PartnerEldestChildDateOfBirthPage.answer()
 
@@ -337,8 +336,7 @@ class JourneySpec extends BaseSpec {
       partner.PartnerDateOfBirthPage.answer()
       partner.PartnerNationalityPage.answer()
       partner.PartnerEmploymentStatusPage.answer()
-      partner.PartnerEntitledToChildBenefitPage.answerNo()
-      partner.PartnerWaitingForEntitlementDecisionPage.answerYes()
+      partner.PartnerClaimingChildBenefitPage.answerGettingPayments()
       partner.PartnerEldestChildName.answer()
       partner.PartnerEldestChildDateOfBirthPage.answer()
 

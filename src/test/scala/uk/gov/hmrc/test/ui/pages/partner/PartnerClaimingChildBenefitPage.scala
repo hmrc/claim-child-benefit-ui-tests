@@ -16,9 +16,23 @@
 
 package uk.gov.hmrc.test.ui.pages.partner
 
+import org.openqa.selenium.By
+import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-object PartnerEntitledToChildBenefitPage extends BasePage with BooleanPage {
+object PartnerClaimingChildBenefitPage extends BasePage {
 
-  override val url: String = "partner-currently-entitled-to-child-benefit"
+  override val url: String = "partner-claiming-child-benefit"
+
+  def answerGettingPayments()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_0")).click()
+    continue()
+  }
+
+  def answerNotClaiming()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_2")).click()
+    continue()
+  }
 }
