@@ -35,6 +35,7 @@ object BankAccountDetailsPage extends BasePage with OptionValues {
   def answer()(implicit pos: Position): Unit = {
     onPage()
     driver.findElement(By.id("accountName")).sendKeys("Mx F Bar")
+    driver.findElement(By.id("bankName")).sendKeys("Bank Name")
     driver.findElement(By.id("sortCode")).sendKeys(sortCode)
     driver.findElement(By.id("accountNumber")).sendKeys(accountNumber)
     continue()
