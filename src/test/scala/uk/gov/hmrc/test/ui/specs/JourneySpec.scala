@@ -46,7 +46,7 @@ class JourneySpec extends BaseSpec {
       income.ApplicantBenefitsPage.answer()
       income.TaxChargeExplanationPage.continue()
 
-      payments.CurrentlyReceivingChildBenefitPage.answerNo()
+      payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
       payments.WantToBePaidPage.answerYes()
       payments.PaymentFrequencyPage.answerEveryFourWeeks()
       payments.ApplicantHasSuitableAccountPage.answerYes()
@@ -150,7 +150,7 @@ class JourneySpec extends BaseSpec {
       income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
       income.TaxChargeExplanationPage.continue()
 
-      payments.CurrentlyReceivingChildBenefitPage.answerYes()
+      payments.CurrentlyReceivingChildBenefitPage.answerGettingPayments()
       payments.EldestChildNamePage.answer()
       payments.EldestChildDateOfBirthPage.answer()
       payments.WantToBePaidToExistingAccountPage.answerYes()
@@ -249,7 +249,7 @@ class JourneySpec extends BaseSpec {
       income.ApplicantBenefitsPage.answer()
       income.TaxChargeExplanationPage.continue()
 
-      payments.CurrentlyReceivingChildBenefitPage.answerNo()
+      payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
       payments.WantToBePaidPage.answerNo()
 
       applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
@@ -282,7 +282,7 @@ class JourneySpec extends BaseSpec {
       income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
       income.TaxChargeExplanationPage.continue()
 
-      payments.CurrentlyReceivingChildBenefitPage.answerNo()
+      payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
       payments.WantToBePaidPage.answerNo()
 
       applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
@@ -313,7 +313,7 @@ class JourneySpec extends BaseSpec {
       income.ApplicantOrPartnerBenefitsPage.answerUniversalCredit()
       income.TaxChargeExplanationPage.continue()
 
-      payments.CurrentlyReceivingChildBenefitPage.answerNo()
+      payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
       payments.WantToBePaidPage.answerYes()
       payments.PaymentFrequencyPage.answerWeekly()
       payments.ApplicantHasSuitableAccountPage.answerYes()
