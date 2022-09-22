@@ -44,7 +44,6 @@ class JourneySpec extends BaseSpec {
 
       income.ApplicantIncomePage.answer()
       income.ApplicantBenefitsPage.answer()
-      income.TaxChargeExplanationPage.continue()
 
       payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
       payments.WantToBePaidPage.answerYes()
@@ -148,11 +147,11 @@ class JourneySpec extends BaseSpec {
 
       income.ApplicantOrPartnerIncomePage.answer()
       income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
-      income.TaxChargeExplanationPage.continue()
 
       payments.CurrentlyReceivingChildBenefitPage.answerGettingPayments()
       payments.EldestChildNamePage.answer()
       payments.EldestChildDateOfBirthPage.answer()
+      payments.WantToBePaidPage.answerYes()
       payments.WantToBePaidToExistingAccountPage.answerYes()
 
       applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
@@ -247,7 +246,6 @@ class JourneySpec extends BaseSpec {
       And("I continue with the journey")
       income.ApplicantIncomePage.answer()
       income.ApplicantBenefitsPage.answer()
-      income.TaxChargeExplanationPage.continue()
 
       payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
       payments.WantToBePaidPage.answerNo()
@@ -280,7 +278,6 @@ class JourneySpec extends BaseSpec {
       And("I continue with the journey")
       income.ApplicantOrPartnerIncomePage.answer()
       income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
-      income.TaxChargeExplanationPage.continue()
 
       payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
       payments.WantToBePaidPage.answerNo()
@@ -311,7 +308,6 @@ class JourneySpec extends BaseSpec {
 
       income.ApplicantOrPartnerIncomePage.answer()
       income.ApplicantOrPartnerBenefitsPage.answerUniversalCredit()
-      income.TaxChargeExplanationPage.continue()
 
       payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
       payments.WantToBePaidPage.answerYes()
