@@ -20,5 +20,5 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
 object ApplicantLivedAtCurrentAddressForOneYearPage extends BasePage with BooleanPage {
 
-  override val url: String = "lived-at-current-address-12-months"
+  override val url: String = "lived-at-current-address-a-year"
 }
