@@ -120,6 +120,7 @@ class JourneySpec extends BaseSpec {
       child.RemoveChildPage(1).answerNo()
       child.AddChildPage.answerNo()
 
+      AdditionalInformationPage.answerWithInformation()
       CheckYourAnswersPage.onPage()
 
       Then("I must be able to download the PDF")
@@ -188,6 +189,7 @@ class JourneySpec extends BaseSpec {
       child.CheckChildDetailsPage(1).continue()
       child.AddChildPage.answerNo()
 
+      AdditionalInformationPage.answerWithNoInformation()
       CheckYourAnswersPage.onPage()
 
       Then("I must be able to download the PDF")
@@ -347,6 +349,8 @@ class JourneySpec extends BaseSpec {
       child.AnyoneClaimedForChildBeforePage(1).answerNo()
       child.CheckChildDetailsPage(1).continue()
       child.AddChildPage.answerNo()
+
+      AdditionalInformationPage.answerWithInformation()
 
       Then("I change my answers to indicate do not receive any benefits")
       CheckYourAnswersPage.changeBenefits()
