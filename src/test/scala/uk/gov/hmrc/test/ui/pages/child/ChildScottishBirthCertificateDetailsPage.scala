@@ -22,17 +22,23 @@ import org.scalactic.source.Position
 import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-import java.time.Year
+import java.time.LocalDate
 
 final case class ChildScottishBirthCertificateDetailsPage(index: Int) extends BasePage with OptionValues {
 
   override val url: String = s"child-scottish-birth-certificate-details/$index"
 
-  private lazy val birthCertificateNumber: String = Gen.listOfN(10, Gen.numChar).map(_.mkString("")).sample.value
+  private lazy val district = Gen.choose(100, 999).sample.value.toString
+  private lazy val maxYear  = LocalDate.now.getYear
+  private lazy val minYear  = maxYear - 20
+  private lazy val year     = Gen.choose(minYear, maxYear).sample.value.toString
+  private lazy val entry    = Gen.choose(1, 999).sample.value.toString
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value")).sendKeys(birthCertificateNumber)
+    driver.findElement(By.id("district")).sendKeys(district)
+    driver.findElement(By.id("year")).sendKeys(year)
+    driver.findElement(By.id("entry")).sendKeys(entry)
     continue()
   }
 }
