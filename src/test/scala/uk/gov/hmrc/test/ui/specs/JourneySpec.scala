@@ -66,7 +66,6 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantPreviousUkAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
       applicant.ApplicantNationalityPage.answer()
-      applicant.ApplicantEmploymentStatusPage.answer()
 
       child.ChildNamePage(1).answer()
       child.ChildHasPreviousNamePage(1).answerNo()
@@ -163,7 +162,6 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantPreviousInternationalAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
       applicant.ApplicantNationalityPage.answer()
-      applicant.ApplicantEmploymentStatusPage.answer()
 
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
@@ -323,7 +321,6 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
       applicant.ApplicantPhoneNumberPage.answer()
       applicant.ApplicantNationalityPage.answer()
-      applicant.ApplicantEmploymentStatusPage.answer()
 
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
