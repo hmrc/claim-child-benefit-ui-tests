@@ -65,7 +65,6 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantPreviousAddressInUkPage.answerYes()
       applicant.ApplicantPreviousUkAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
-      applicant.BestTimeToContactPage.answer()
       applicant.ApplicantNationalityPage.answer()
       applicant.ApplicantEmploymentStatusPage.answer()
 
@@ -163,7 +162,6 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantPreviousAddressInUkPage.answerNo()
       applicant.ApplicantPreviousInternationalAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
-      applicant.BestTimeToContactPage.answer()
       applicant.ApplicantNationalityPage.answer()
       applicant.ApplicantEmploymentStatusPage.answer()
 
@@ -324,7 +322,6 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantCurrentUkAddressPage.answer()
       applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
       applicant.ApplicantPhoneNumberPage.answer()
-      applicant.BestTimeToContactPage.answer()
       applicant.ApplicantNationalityPage.answer()
       applicant.ApplicantEmploymentStatusPage.answer()
 
