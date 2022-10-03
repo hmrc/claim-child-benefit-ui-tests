@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.specs
 
 import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.applicant.ApplicantPhoneNumberPage
 import uk.gov.hmrc.test.ui.pages.income.ApplicantOrPartnerBenefitsPage
 import uk.gov.hmrc.test.ui.specs.tags.ZapTests
 
@@ -61,9 +62,6 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantNinoPage.answer()
       applicant.ApplicantDateOfBirthPage.answer()
       applicant.ApplicantCurrentUkAddressPage.answer()
-      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerNo()
-      applicant.ApplicantPreviousAddressInUkPage.answerYes()
-      applicant.ApplicantPreviousUkAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
       applicant.ApplicantNationalityPage.answer()
 
@@ -158,8 +156,7 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantDateOfBirthPage.answer()
       applicant.ApplicantCurrentUkAddressPage.answer()
       applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerNo()
-      applicant.ApplicantPreviousAddressInUkPage.answerNo()
-      applicant.ApplicantPreviousInternationalAddressPage.answer()
+      applicant.ApplicantPreviousUkAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
       applicant.ApplicantNationalityPage.answer()
 
@@ -193,6 +190,44 @@ class JourneySpec extends BaseSpec {
   }
 
   Feature("Extra page journeys") {
+
+    Scenario("A person with an international previous address", ZapTests) {
+
+      Given("I am on the start page")
+      StartPage.loadPage()
+
+      When("I complete the journey")
+      StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
+      AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+      RelationshipStatusPage.answerMarried()
+      AlwaysLivedInUkPage.answerNo()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerYes()
+
+      income.ApplicantOrPartnerIncomePage.answer()
+      income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
+
+      payments.CurrentlyReceivingChildBenefitPage.answerGettingPayments()
+      payments.EldestChildNamePage.answer()
+      payments.EldestChildDateOfBirthPage.answer()
+      payments.WantToBePaidPage.answerYes()
+      payments.WantToBePaidToExistingAccountPage.answerYes()
+
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantDateOfBirthPage.answer()
+      applicant.ApplicantCurrentAddressInUkPage.answerYes()
+      applicant.ApplicantCurrentUkAddressPage.answer()
+      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerNo()
+
+      When("I answer that I have an international previous address")
+      applicant.ApplicantPreviousAddressInUkPage.answerNo()
+      applicant.ApplicantPreviousInternationalAddressPage.answer()
+
+      Then("I must be able to continue the journey")
+      ApplicantPhoneNumberPage.onPage()
+    }
 
     Scenario("A person cohabiting with a partner", ZapTests) {
 
