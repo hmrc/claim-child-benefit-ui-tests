@@ -30,9 +30,15 @@ object ApplicantNationalityPage extends BasePage {
     continue()
   }
 
-  def answerOther()(implicit pos: Position): Unit = {
+  def answerDualWithBritish()(implicit pos: Position): Unit = {
     onPage()
     driver.findElement(By.id("value_1")).click()
+    continue()
+  }
+
+  def answerOther()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_2")).click()
     continue()
   }
 }

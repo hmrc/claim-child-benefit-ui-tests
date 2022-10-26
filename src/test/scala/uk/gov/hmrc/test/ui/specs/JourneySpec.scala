@@ -158,7 +158,7 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerNo()
       applicant.ApplicantPreviousUkAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
-      applicant.ApplicantNationalityPage.answerBritish()
+      applicant.ApplicantNationalityPage.answerDualWithBritish()
 
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
