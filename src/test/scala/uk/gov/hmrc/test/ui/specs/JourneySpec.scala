@@ -63,7 +63,7 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantDateOfBirthPage.answer()
       applicant.ApplicantCurrentUkAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
-      applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantNationalityPage.answerBritish()
 
       child.ChildNamePage(1).answer()
       child.ChildHasPreviousNamePage(1).answerNo()
@@ -158,7 +158,7 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerNo()
       applicant.ApplicantPreviousUkAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
-      applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantNationalityPage.answerBritish()
 
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
@@ -354,7 +354,7 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantCurrentUkAddressPage.answer()
       applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
       applicant.ApplicantPhoneNumberPage.answer()
-      applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantNationalityPage.answerBritish()
 
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
@@ -462,6 +462,48 @@ class JourneySpec extends BaseSpec {
 
       Then("I must be shown the kick-out page")
       UsePrintAndPostFormPage.onPage()
+    }
+
+    Scenario(
+      "I am not British",
+      ZapTests
+    ) {
+
+      Given("I am on the start page")
+      StartPage.loadPage()
+
+      When("I say that I am not British")
+      StartPage.startNow()
+      RecentlyClaimedPage.answerNo()
+      AnyChildLivedWithOthersPage.answerNo()
+      ApplicantNamePage.answer()
+      RelationshipStatusPage.answerSingle()
+      AlwaysLivedInUkPage.answerYes()
+
+      income.ApplicantIncomePage.answer()
+      income.ApplicantBenefitsPage.answer()
+
+      payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
+      payments.WantToBePaidPage.answerYes()
+      payments.PaymentFrequencyPage.answerEveryFourWeeks()
+      payments.ApplicantHasSuitableAccountPage.answerYes()
+      payments.BankAccountHolderPage.answerApplicant()
+      payments.BankAccountDetailsPage.answer()
+
+      applicant.ApplicantHasPreviousFamilyNamePage.answerYes()
+      applicant.ApplicantPreviousFamilyNamePage(1).answer()
+      applicant.AddApplicantPreviousFamilyName.remove(1)
+      applicant.RemoveApplicantPreviousFamilyNamePage(1).answerNo()
+      applicant.AddApplicantPreviousFamilyName.answerNo()
+      applicant.ApplicantNinoKnownPage.answerYes()
+      applicant.ApplicantNinoPage.answer()
+      applicant.ApplicantDateOfBirthPage.answer()
+      applicant.ApplicantCurrentUkAddressPage.answer()
+      applicant.ApplicantPhoneNumberPage.answer()
+      applicant.ApplicantNationalityPage.answerOther()
+
+      Then("I must be shown the kick-out page")
+      CannotUseServiceNationalityPage.onPage()
     }
   }
 }

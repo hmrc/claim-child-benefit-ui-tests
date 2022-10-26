@@ -14,25 +14,9 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.applicant
+package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.BasePage
+object CannotUseServiceNationalityPage extends BasePage {
 
-object ApplicantNationalityPage extends BasePage {
-
-  override val url: String = "your-nationality"
-
-  def answerBritish()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerOther()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_1")).click()
-    continue()
-  }
+  override val url: String = "cannot-use-service"
 }
