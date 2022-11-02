@@ -24,9 +24,21 @@ object ApplicantNationalityPage extends BasePage {
 
   override val url: String = "your-nationality"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answerBritish()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value")).sendKeys("British")
+    driver.findElement(By.id("value_0")).click()
+    continue()
+  }
+
+  def answerDualWithBritish()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_1")).click()
+    continue()
+  }
+
+  def answerOther()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_2")).click()
     continue()
   }
 }
