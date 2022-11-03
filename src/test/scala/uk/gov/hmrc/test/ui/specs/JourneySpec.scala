@@ -38,7 +38,6 @@ class JourneySpec extends BaseSpec {
       When("I complete the journey")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerSingle()
       AlwaysLivedInUkPage.answerYes()
@@ -75,6 +74,10 @@ class JourneySpec extends BaseSpec {
       child.AdoptingThroughLocalAuthorityPage(1).answerNo()
       child.ApplicantRelationshipToChildPage(1).answer()
       child.AnyoneClaimedForChildBeforePage(1).answerNo()
+      child.ChildLivesWithApplicantPage(1).answerNo()
+      child.GuardianNamePage(1).answer()
+      child.GuardianAddressInUkPage(1).answerYes()
+      child.GuardianUkAddressPage(1).answer()
       child.CheckChildDetailsPage(1).continue()
 
       child.AddChildPage.answerYes()
@@ -96,6 +99,10 @@ class JourneySpec extends BaseSpec {
       child.PreviousClaimantNamePage(2).answer()
       child.PreviousClaimantAddressInUkPage(2).answerYes()
       child.PreviousClaimantUkAddressPage(2).answer()
+      child.ChildLivesWithApplicantPage(2).answerNo()
+      child.GuardianNamePage(2).answer()
+      child.GuardianAddressInUkPage(2).answerNo()
+      child.GuardianInternationalAddressPage(2).answer()
       child.CheckChildDetailsPage(2).continue()
 
       child.AddChildPage.answerYes()
@@ -110,6 +117,8 @@ class JourneySpec extends BaseSpec {
       child.PreviousClaimantNamePage(3).answer()
       child.PreviousClaimantAddressInUkPage(3).answerNo()
       child.PreviousClaimantInternationalAddressPage(3).answer()
+      child.ChildLivesWithApplicantPage(3).answerYes()
+      child.ChildLivedWithAnyoneElsePage(3).answerNo()
       child.CheckChildDetailsPage(3).continue()
 
       child.AddChildPage.remove(1)
@@ -137,7 +146,6 @@ class JourneySpec extends BaseSpec {
       When("I complete the journey")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerMarried()
       AlwaysLivedInUkPage.answerYes()
@@ -178,7 +186,33 @@ class JourneySpec extends BaseSpec {
       child.AdoptingThroughLocalAuthorityPage(1).answerNo()
       child.ApplicantRelationshipToChildPage(1).answer()
       child.AnyoneClaimedForChildBeforePage(1).answerNo()
+      child.ChildLivesWithApplicantPage(1).answerYes()
+      child.ChildLivedWithAnyoneElsePage(1).answerYes()
+      child.PreviousGuardianNamePage(1).answer()
+      child.PreviousGuardianAddressInUkPage(1).answerYes()
+      child.PreviousGuardianUkAddressPage(1).answer()
+      child.PreviousGuardianPhoneNumberPage(1).answer()
+      child.DateChildStartedLivingWithApplicantPage(1).answer()
       child.CheckChildDetailsPage(1).continue()
+      child.AddChildPage.answerYes()
+
+      child.ChildNamePage(2).answer()
+      child.ChildHasPreviousNamePage(2).answerNo()
+      child.ChildBiologicalSexPage(2).answer()
+      child.ChildDateOfBirthPage(2).answer()
+      child.ChildBirthRegistrationCountryPage(2).answerEngland()
+      child.BirthCertificateHasSystemNumberPage(2).answerNo()
+      child.AdoptingThroughLocalAuthorityPage(2).answerNo()
+      child.ApplicantRelationshipToChildPage(2).answer()
+      child.AnyoneClaimedForChildBeforePage(2).answerNo()
+      child.ChildLivesWithApplicantPage(2).answerYes()
+      child.ChildLivedWithAnyoneElsePage(2).answerYes()
+      child.PreviousGuardianNamePage(2).answer()
+      child.PreviousGuardianAddressInUkPage(2).answerNo()
+      child.PreviousGuardianInternationalAddressPage(2).answer()
+      child.PreviousGuardianPhoneNumberPage(2).answer()
+      child.DateChildStartedLivingWithApplicantPage(2).answer()
+      child.CheckChildDetailsPage(2).continue()
       child.AddChildPage.answerNo()
 
       AdditionalInformationPage.answerWithNoInformation()
@@ -199,7 +233,6 @@ class JourneySpec extends BaseSpec {
       When("I complete the journey")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerMarried()
       AlwaysLivedInUkPage.answerNo()
@@ -235,7 +268,6 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
 
       When("I answer that I am cohabiting with a partner")
@@ -251,7 +283,6 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
 
       When("I answer that I am separated")
@@ -267,7 +298,6 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerSingle()
       AlwaysLivedInUkPage.answerNo()
@@ -296,7 +326,6 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerMarried()
       AlwaysLivedInUkPage.answerNo()
@@ -333,7 +362,6 @@ class JourneySpec extends BaseSpec {
       When("I complete the journey")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerMarried()
       AlwaysLivedInUkPage.answerYes()
@@ -374,6 +402,8 @@ class JourneySpec extends BaseSpec {
       child.AdoptingThroughLocalAuthorityPage(1).answerNo()
       child.ApplicantRelationshipToChildPage(1).answer()
       child.AnyoneClaimedForChildBeforePage(1).answerNo()
+      child.ChildLivesWithApplicantPage(1).answerYes()
+      child.ChildLivedWithAnyoneElsePage(1).answerNo()
       child.CheckChildDetailsPage(1).continue()
       child.AddChildPage.answerNo()
 
@@ -405,23 +435,6 @@ class JourneySpec extends BaseSpec {
     }
 
     Scenario(
-      "At least one of the children I am applying for has lived with someone else in the last 12 months",
-      ZapTests
-    ) {
-
-      Given("I am on the start page")
-      StartPage.loadPage()
-
-      When("I say that one of the children I am applying for has lived with someone else in the last 12 months")
-      StartPage.startNow()
-      RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerYes()
-
-      Then("I must be shown the kick-out page")
-      UsePrintAndPostFormPage.onPage()
-    }
-
-    Scenario(
       "I have previously lived or worked outside the UK and am not HM Forces or a civil servant abroad",
       ZapTests
     ) {
@@ -432,7 +445,6 @@ class JourneySpec extends BaseSpec {
       When("I say that I have not always lived in the UK")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerSingle()
       AlwaysLivedInUkPage.answerNo()
@@ -453,7 +465,6 @@ class JourneySpec extends BaseSpec {
       When("I say that I have previously lived or worked outside the UK")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerMarried()
       AlwaysLivedInUkPage.answerNo()
@@ -475,7 +486,6 @@ class JourneySpec extends BaseSpec {
       When("I say that I am not British")
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      AnyChildLivedWithOthersPage.answerNo()
       ApplicantNamePage.answer()
       RelationshipStatusPage.answerSingle()
       AlwaysLivedInUkPage.answerYes()

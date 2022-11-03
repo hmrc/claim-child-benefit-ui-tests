@@ -14,9 +14,22 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.child
 
-object AnyChildLivedWithOthersPage extends BasePage with BooleanPage {
+import org.scalactic.source.Position
+import uk.gov.hmrc.test.ui.pages.{BasePage, DatePage}
 
-  override def url: String = "any-child-in-claim-lived-with-others"
+import java.time.LocalDate
+
+final case class DateChildStartedLivingWithApplicantPage(index: Int) extends BasePage with DatePage {
+
+  override val url: String = s"child-started-living-with-you/$index"
+
+  private def startedLivingWithApplicant: LocalDate = LocalDate.now.minusMonths(1)
+
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    answerDate(startedLivingWithApplicant)
+    continue()
+  }
 }
