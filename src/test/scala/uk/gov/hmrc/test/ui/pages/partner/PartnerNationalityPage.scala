@@ -26,7 +26,7 @@ object PartnerNationalityPage extends BasePage {
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value")).sendKeys("British")
+    selectFromAutocomplete("value", "British")
     continue()
   }
 }
