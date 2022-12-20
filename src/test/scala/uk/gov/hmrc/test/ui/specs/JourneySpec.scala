@@ -191,6 +191,7 @@ class JourneySpec extends BaseSpec {
       child.PreviousGuardianNamePage(1).answer()
       child.PreviousGuardianAddressInUkPage(1).answerYes()
       child.PreviousGuardianUkAddressPage(1).answer()
+      child.PreviousGuardianPhoneNumberKnownPage(1).answerYes()
       child.PreviousGuardianPhoneNumberPage(1).answer()
       child.DateChildStartedLivingWithApplicantPage(1).answer()
       child.CheckChildDetailsPage(1).continue()
