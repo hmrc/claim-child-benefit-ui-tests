@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.payments
+
+import uk.gov.hmrc.test.ui.pages.BasePage
 
 object CannotBePaidWeeklyPage extends BasePage {
 

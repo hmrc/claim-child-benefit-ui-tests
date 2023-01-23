@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.income
+package uk.gov.hmrc.test.ui.pages.payments
 
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage

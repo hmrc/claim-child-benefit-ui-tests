@@ -14,9 +14,20 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.applicant
 
-object UsePrintAndPostFormPage extends BasePage {
+import org.openqa.selenium.By
+import org.scalactic.source.Position
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-  override val url: String = "use-other-form"
+object EldestChildNamePage extends BasePage {
+
+  override val url: String = "eldest-child-name"
+
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("firstName")).sendKeys("Foo")
+    driver.findElement(By.id("lastName")).sendKeys("Bar")
+    continue()
+  }
 }

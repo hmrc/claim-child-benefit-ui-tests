@@ -14,9 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.payments
 
-object AlwaysLivedInUkPage extends BasePage with BooleanPage {
+import org.openqa.selenium.By
+import org.scalactic.source.Position
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-  override val url: String = "always-lived-in-uk"
+object ApplicantBenefitsPage extends BasePage {
+
+  override val url: String = "your-benefits"
+
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_5")).click()
+    continue()
+  }
 }

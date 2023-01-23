@@ -16,20 +16,17 @@
 
 package uk.gov.hmrc.test.ui.pages.payments
 
+import org.openqa.selenium.By
 import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.{BasePage, DatePage}
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-import java.time.LocalDate
+object ApplicantOrPartnerIncomePage extends BasePage {
 
-object EldestChildDateOfBirthPage extends BasePage with DatePage {
-
-  override val url: String = "eldest-child-date-of-birth"
-
-  private lazy val dob: LocalDate = LocalDate.now.minusYears(10)
+  override val url: String = "your-or-your-partners-income"
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    answerDate(dob)
+    driver.findElement(By.id("value_1")).click()
     continue()
   }
 }

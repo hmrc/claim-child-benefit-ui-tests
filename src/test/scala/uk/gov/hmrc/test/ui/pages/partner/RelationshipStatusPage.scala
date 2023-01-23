@@ -14,19 +14,37 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.income
+package uk.gov.hmrc.test.ui.pages.partner
 
 import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-object ApplicantOrPartnerIncomePage extends BasePage {
+object RelationshipStatusPage extends BasePage {
 
-  override val url: String = "your-or-your-partners-income"
+  override def url: String = "relationship-status"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answerSingle()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_4")).click()
+    continue()
+  }
+
+  def answerMarried()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_2")).click()
+    continue()
+  }
+
+  def answerCohabiting()(implicit pos: Position): Unit = {
     onPage()
     driver.findElement(By.id("value_1")).click()
+    continue()
+  }
+
+  def answerSeparated()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_3")).click()
     continue()
   }
 }
