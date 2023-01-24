@@ -14,9 +14,22 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.applicant
 
-object CohabitingDatePage extends BasePage {
+import org.scalactic.source.Position
+import uk.gov.hmrc.test.ui.pages.{BasePage, DatePage}
 
-  override val url: String = "date-started-living-with-partner"
+import java.time.LocalDate
+
+object EldestChildDateOfBirthPage extends BasePage with DatePage {
+
+  override val url: String = "eldest-child-date-of-birth"
+
+  private lazy val dob: LocalDate = LocalDate.now.minusYears(10)
+
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    answerDate(dob)
+    continue()
+  }
 }

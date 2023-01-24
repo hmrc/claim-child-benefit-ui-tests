@@ -16,17 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
-import org.openqa.selenium.By
-import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
-import scala.collection.JavaConverters._
 
-object AddApplicantPreviousFamilyName extends BasePage with BooleanPage with OptionValues {
+object ApplicantUsuallyLivesInUk extends BasePage with BooleanPage {
 
-  override val url: String = "add-previous-family-name"
-
-  def remove(index: Int): Unit = {
-    onPage()
-    driver.findElements(By.xpath("//a[*/text() = 'Remove']")).asScala.lift(index - 1).value.click()
-  }
+  override val url: String = "usually-lived-in-uk"
 }

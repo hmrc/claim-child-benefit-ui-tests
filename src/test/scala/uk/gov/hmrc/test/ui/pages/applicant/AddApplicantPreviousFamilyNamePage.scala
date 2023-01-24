@@ -14,13 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.driver
+package uk.gov.hmrc.test.ui.pages.applicant
 
-import com.typesafe.scalalogging.LazyLogging
-import org.openqa.selenium.WebDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
+import org.openqa.selenium.By
+import org.scalatest.OptionValues
+import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
+import scala.collection.JavaConverters._
 
-trait BrowserDriver extends LazyLogging {
+object AddApplicantPreviousFamilyNamePage extends BasePage with BooleanPage with OptionValues {
 
-  implicit lazy val driver: WebDriver = SingletonDriver.getInstance()
+  override val url: String = "add-previous-family-name"
+
+  def remove(index: Int): Unit = {
+    onPage()
+    driver.findElements(By.xpath("//a[*/text() = 'Remove']")).asScala.lift(index - 1).value.click()
+  }
 }

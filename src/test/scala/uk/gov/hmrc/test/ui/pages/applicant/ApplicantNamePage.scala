@@ -14,25 +14,20 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.payments
+package uk.gov.hmrc.test.ui.pages.applicant
 
 import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-object CurrentlyReceivingChildBenefitPage extends BasePage {
+object ApplicantNamePage extends BasePage {
 
-  override val url: String = "currently-receiving-child-benefit"
+  override val url: String = "your-name"
 
-  def answerGettingPayments()(implicit pos: Position): Unit = {
+  def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerNotClaiming()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_2")).click()
+    driver.findElement(By.id("firstName")).sendKeys("Foo")
+    driver.findElement(By.id("lastName")).sendKeys("Bar")
     continue()
   }
 }

@@ -17,33 +17,41 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 
-object RelationshipStatusPage extends BasePage {
+object TaskListPage extends BasePage {
 
-  override def url: String = "relationship-status"
+  override val url: String = "task-list"
 
-  def answerSingle()(implicit pos: Position): Unit = {
+  def startApplicantSection(): Unit = {
     onPage()
-    driver.findElement(By.id("value_4")).click()
-    continue()
+    clickLink("Your details")
   }
 
-  def answerMarried()(implicit pos: Position): Unit = {
+  def startPartnerDetails(): Unit = {
     onPage()
-    driver.findElement(By.id("value_2")).click()
-    continue()
+    clickLink("Partner details")
   }
 
-  def answerCohabiting()(implicit pos: Position): Unit = {
+  def startChildDetails(): Unit = {
     onPage()
-    driver.findElement(By.id("value_1")).click()
-    continue()
+    clickLink("Child details")
   }
 
-  def answerSeparated()(implicit pos: Position): Unit = {
+  def startPaymentDetails(): Unit = {
     onPage()
-    driver.findElement(By.id("value_3")).click()
-    continue()
+    clickLink("Payment details")
   }
+
+  def startFurtherInformation(): Unit = {
+    onPage()
+    clickLink("Further details to share")
+  }
+
+  def submitClaim(): Unit = {
+    onPage()
+    clickLink("Submit claim")
+  }
+
+  private def clickLink(content: String): Unit =
+    driver.findElement(By.xpath(s"//a[text() = '$content']")).click()
 }

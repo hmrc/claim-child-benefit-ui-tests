@@ -14,13 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.driver
+package uk.gov.hmrc.test.ui.pages.applicant
 
-import com.typesafe.scalalogging.LazyLogging
-import org.openqa.selenium.WebDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-trait BrowserDriver extends LazyLogging {
+object CheckApplicantDetailsPage extends BasePage {
 
-  implicit lazy val driver: WebDriver = SingletonDriver.getInstance()
+  override val url: String = "check-your-details"
+
+  def answer(): Unit = {
+    onPage()
+    continue()
+  }
 }

@@ -14,9 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.applicant
 
-object CannotUseServiceNationalityPage extends BasePage {
+import uk.gov.hmrc.test.ui.pages.{BasePage, DatePage}
 
-  override val url: String = "cannot-use-service"
+import java.time.LocalDate
+
+object DateApplicantArrivedInUk extends BasePage with DatePage {
+
+  override val url: String = "arrived-in-uk"
+
+  def answer(): Unit = {
+    onPage()
+    answerDate(LocalDate.now.minusYears(1))
+    continue()
+  }
 }

@@ -14,9 +14,22 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.payments
 
-object SeparationDatePage extends BasePage {
+import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-  override val url: String = "date-separated-from-partner"
+object CheckPaymentDetails extends BasePage {
+
+  override val url: String = "check-payment-details"
+
+  def answer(): Unit = {
+    onPage()
+    continue()
+  }
+
+  def changeBenefits(): Unit = {
+    onPage()
+    driver.findElement(By.xpath(s"//a[contains(@href, '${ApplicantOrPartnerBenefitsPage.url}')]")).click()
+  }
 }

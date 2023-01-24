@@ -14,19 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.income
+package uk.gov.hmrc.test.ui.pages.applicant
 
-import org.openqa.selenium.By
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-object ApplicantIncomePage extends BasePage {
+object ApplicantHasAlwaysLivedInUkPage extends BasePage with BooleanPage {
 
-  override val url: String = "your-income"
-
-  def answer()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_1")).click()
-    continue()
-  }
+  override val url: String = "always-lived-in-uk"
 }

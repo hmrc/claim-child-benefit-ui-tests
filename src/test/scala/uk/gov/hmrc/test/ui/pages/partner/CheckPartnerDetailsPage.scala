@@ -14,18 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.partner
 
-import org.openqa.selenium.By
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.income.ApplicantOrPartnerBenefitsPage
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-object CheckYourAnswersPage extends BasePage {
+object CheckPartnerDetailsPage extends BasePage {
 
-  override val url: String = s"check-your-answers"
+  override val url: String = "check-partners-details"
 
-  def changeBenefits()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
-    driver.findElement(By.xpath(s"//a[contains(@href, '${ApplicantOrPartnerBenefitsPage.url}')]")).click()
+    continue()
   }
 }

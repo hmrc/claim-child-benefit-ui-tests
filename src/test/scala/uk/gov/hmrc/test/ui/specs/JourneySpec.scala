@@ -16,9 +16,8 @@
 
 package uk.gov.hmrc.test.ui.specs
 
+import uk.gov.hmrc.test.ui.pages.partner.RelationshipStatusPage
 import uk.gov.hmrc.test.ui.pages._
-import uk.gov.hmrc.test.ui.pages.applicant.ApplicantPhoneNumberPage
-import uk.gov.hmrc.test.ui.pages.income.ApplicantOrPartnerBenefitsPage
 import uk.gov.hmrc.test.ui.specs.tags.ZapTests
 
 class JourneySpec extends BaseSpec {
@@ -36,34 +35,33 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
 
       When("I complete the journey")
+
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      ApplicantNamePage.answer()
-      RelationshipStatusPage.answerSingle()
-      AlwaysLivedInUkPage.answerYes()
 
-      income.ApplicantIncomePage.answer()
-      income.ApplicantBenefitsPage.answer()
-
-      payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
-      payments.WantToBePaidPage.answerYes()
-      payments.PaymentFrequencyPage.answerEveryFourWeeks()
-      payments.ApplicantHasSuitableAccountPage.answerYes()
-      payments.BankAccountHolderPage.answerApplicant()
-      payments.BankAccountDetailsPage.answer()
-
-      applicant.ApplicantHasPreviousFamilyNamePage.answerYes()
-      applicant.ApplicantPreviousFamilyNamePage(1).answer()
-      applicant.AddApplicantPreviousFamilyName.remove(1)
-      applicant.RemoveApplicantPreviousFamilyNamePage(1).answerNo()
-      applicant.AddApplicantPreviousFamilyName.answerNo()
+      TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerYes()
       applicant.ApplicantNinoPage.answer()
+      applicant.ApplicantNamePage.answer()
+      applicant.ApplicantHasPreviousFamilyNamePage.answerYes()
+      applicant.ApplicantPreviousFamilyNamePage(1).answer()
+      applicant.AddApplicantPreviousFamilyNamePage.remove(1)
+      applicant.RemoveApplicantPreviousFamilyNamePage(1).answerNo()
+      applicant.AddApplicantPreviousFamilyNamePage.answerNo()
       applicant.ApplicantDateOfBirthPage.answer()
-      applicant.ApplicantCurrentUkAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
       applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantHasAlwaysLivedInUkPage.answerYes()
+      applicant.ApplicantCurrentUkAddressPage.answer()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
+      applicant.ApplicantCurrentlyReceivingChildBenefitPage.answerNotClaiming()
+      applicant.CheckApplicantDetailsPage.answer()
 
+      TaskListPage.startPartnerDetails()
+      partner.RelationshipStatusPage.answerSingle()
+      partner.CheckPartnerDetailsPage.answer()
+
+      TaskListPage.startChildDetails()
       child.ChildNamePage(1).answer()
       child.ChildHasPreviousNamePage(1).answerNo()
       child.ChildBiologicalSexPage(1).answer()
@@ -131,8 +129,20 @@ class JourneySpec extends BaseSpec {
       child.RemoveChildPage(1).answerNo()
       child.AddChildPage.answerNo()
 
+      TaskListPage.startPaymentDetails()
+      payments.ApplicantIncomePage.answer()
+      payments.WantToBePaidPage.answerYes()
+      payments.ApplicantBenefitsPage.answer()
+      payments.PaymentFrequencyPage.answerEveryFourWeeks()
+      payments.ApplicantHasSuitableAccountPage.answerYes()
+      payments.BankAccountHolderPage.answerApplicant()
+      payments.BankAccountDetailsPage.answer()
+      payments.CheckPaymentDetails.answer()
+
+      TaskListPage.startFurtherInformation()
       AdditionalInformationPage.answerWithInformation()
-      CheckYourAnswersPage.onPage()
+
+      TaskListPage.submitClaim()
 
       Then("I must be able to download the PDF")
       // TODO
@@ -151,38 +161,39 @@ class JourneySpec extends BaseSpec {
 
       When("I complete the journey")
       StartPage.startNow()
+
       RecentlyClaimedPage.answerNo()
-      ApplicantNamePage.answer()
-      RelationshipStatusPage.answerMarried()
-      AlwaysLivedInUkPage.answerYes()
 
-      income.ApplicantOrPartnerIncomePage.answer()
-      income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
-
-      payments.CurrentlyReceivingChildBenefitPage.answerGettingPayments()
-      payments.EldestChildNamePage.answer()
-      payments.EldestChildDateOfBirthPage.answer()
-      payments.WantToBePaidPage.answerYes()
-      payments.WantToBePaidToExistingAccountPage.answerYes()
-
-      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantNamePage.answer()
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
       applicant.ApplicantDateOfBirthPage.answer()
-      applicant.ApplicantCurrentUkAddressPage.answer()
-      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerNo()
-      applicant.ApplicantPreviousUkAddressPage.answer()
       applicant.ApplicantPhoneNumberPage.answer()
       applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantHasAlwaysLivedInUkPage.answerYes()
+      applicant.ApplicantCurrentUkAddressPage.answer()
+      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
+      applicant.ApplicantCurrentlyReceivingChildBenefitPage.answerGettingPayments()
+      applicant.EldestChildNamePage.answer()
+      applicant.EldestChildDateOfBirthPage.answer()
+      applicant.CheckApplicantDetailsPage.answer()
 
+      TaskListPage.startPartnerDetails()
+      partner.RelationshipStatusPage.answerMarried()
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
       partner.PartnerNinoPage.answer()
       partner.PartnerDateOfBirthPage.answer()
       partner.PartnerNationalityPage.answer()
+      partner.PartnerIsHmfOrCivilServantPage.answerNo()
       partner.PartnerClaimingChildBenefitPage.answerGettingPayments()
       partner.PartnerEldestChildName.answer()
       partner.PartnerEldestChildDateOfBirthPage.answer()
+      partner.CheckPartnerDetailsPage.answer()
 
+      TaskListPage.startChildDetails()
       child.ChildNamePage(1).answer()
       child.ChildHasPreviousNamePage(1).answerNo()
       child.ChildBiologicalSexPage(1).answer()
@@ -231,8 +242,17 @@ class JourneySpec extends BaseSpec {
       child.CheckChildDetailsPage(2).continue()
       child.AddChildPage.answerNo()
 
+      TaskListPage.startPaymentDetails()
+      payments.ApplicantOrPartnerIncomePage.answer()
+      payments.WantToBePaidPage.answerYes()
+      payments.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
+      payments.WantToBePaidToExistingAccountPage.answerYes()
+      payments.CheckPaymentDetails.answer()
+
+      TaskListPage.startFurtherInformation()
       AdditionalInformationPage.answerWithNoInformation()
-      CheckYourAnswersPage.onPage()
+
+      TaskListPage.submitClaim()
 
       Then("I must be able to download the PDF")
       // TODO
@@ -247,25 +267,20 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
 
       When("I complete the journey")
+
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      ApplicantNamePage.answer()
-      RelationshipStatusPage.answerMarried()
-      AlwaysLivedInUkPage.answerNo()
-      applicant.ApplicantIsHmfOrCivilServantPage.answerYes()
 
-      income.ApplicantOrPartnerIncomePage.answer()
-      income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
-
-      payments.CurrentlyReceivingChildBenefitPage.answerGettingPayments()
-      payments.EldestChildNamePage.answer()
-      payments.EldestChildDateOfBirthPage.answer()
-      payments.WantToBePaidPage.answerYes()
-      payments.WantToBePaidToExistingAccountPage.answerYes()
-
-      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantNamePage.answer()
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
       applicant.ApplicantDateOfBirthPage.answer()
+      applicant.ApplicantPhoneNumberPage.answer()
+      applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantHasAlwaysLivedInUkPage.answerNo()
+      applicant.ApplicantUsuallyLivesInUk.answerYes()
+      applicant.DateApplicantArrivedInUk.answer()
       applicant.ApplicantCurrentAddressInUkPage.answerYes()
       applicant.ApplicantCurrentUkAddressPage.answer()
       applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerNo()
@@ -275,96 +290,71 @@ class JourneySpec extends BaseSpec {
       applicant.ApplicantPreviousInternationalAddressPage.answer()
 
       Then("I must be able to continue the journey")
-      ApplicantPhoneNumberPage.onPage()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
     }
 
     Scenario("A person cohabiting with a partner", ZapTests) {
 
       Given("I am on the 'Relationship type' page")
+
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      ApplicantNamePage.answer()
+
+      TaskListPage.startApplicantSection()
+      applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantNamePage.answer()
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      applicant.ApplicantDateOfBirthPage.answer()
+      applicant.ApplicantPhoneNumberPage.answer()
+      applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantHasAlwaysLivedInUkPage.answerYes()
+      applicant.ApplicantCurrentUkAddressPage.answer()
+      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
+      applicant.ApplicantCurrentlyReceivingChildBenefitPage.answerGettingPayments()
+      applicant.EldestChildNamePage.answer()
+      applicant.EldestChildDateOfBirthPage.answer()
+      applicant.CheckApplicantDetailsPage.answer()
 
       When("I answer that I am cohabiting with a partner")
+      TaskListPage.startPartnerDetails()
       RelationshipStatusPage.answerCohabiting()
 
       Then("I must be shown the 'Cohabiting start date' page")
-      CohabitingDatePage.onPage()
+      partner.CohabitingDatePage.onPage()
     }
 
     Scenario("A person who is separated", ZapTests) {
 
       Given("I am on the 'Relationship type' page")
+
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      ApplicantNamePage.answer()
+
+      TaskListPage.startApplicantSection()
+      applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantNamePage.answer()
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      applicant.ApplicantDateOfBirthPage.answer()
+      applicant.ApplicantPhoneNumberPage.answer()
+      applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantHasAlwaysLivedInUkPage.answerYes()
+      applicant.ApplicantCurrentUkAddressPage.answer()
+      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
+      applicant.ApplicantCurrentlyReceivingChildBenefitPage.answerGettingPayments()
+      applicant.EldestChildNamePage.answer()
+      applicant.EldestChildDateOfBirthPage.answer()
+      applicant.CheckApplicantDetailsPage.answer()
 
       When("I answer that I am separated")
+      TaskListPage.startPartnerDetails()
       RelationshipStatusPage.answerSeparated()
 
       Then("I must be shown the 'Separation date' page")
-      SeparationDatePage.onPage()
-    }
-
-    Scenario("A person who is HM Forces or a civil servant abroad", ZapTests) {
-
-      Given("I answer that I have not always lived in the UK")
-      StartPage.loadPage()
-      StartPage.startNow()
-      RecentlyClaimedPage.answerNo()
-      ApplicantNamePage.answer()
-      RelationshipStatusPage.answerSingle()
-      AlwaysLivedInUkPage.answerNo()
-
-      When("I answer that I am a civil servant")
-      applicant.ApplicantIsHmfOrCivilServantPage.answerYes()
-
-      And("I continue with the journey")
-      income.ApplicantIncomePage.answer()
-      income.ApplicantBenefitsPage.answer()
-
-      payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
-      payments.WantToBePaidPage.answerNo()
-
-      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
-      applicant.ApplicantNinoKnownPage.answerNo()
-      applicant.ApplicantDateOfBirthPage.answer()
-
-      Then("I must be asked if my current address is in the UK")
-      applicant.ApplicantCurrentAddressInUkPage.onPage()
-    }
-
-    Scenario("A person whose partner is HM Forces or a civil servant abroad", ZapTests) {
-
-      Given("I answer that I have not always lived in the UK")
-      StartPage.loadPage()
-      StartPage.startNow()
-      RecentlyClaimedPage.answerNo()
-      ApplicantNamePage.answer()
-      RelationshipStatusPage.answerMarried()
-      AlwaysLivedInUkPage.answerNo()
-
-      When("I answer that I am not a civil servant")
-      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
-
-      And("I answer that my partner is HM Forces or a civil servant abroad")
-      partner.PartnerIsHmfOrCivilServantPage.answerYes()
-
-      And("I continue with the journey")
-      income.ApplicantOrPartnerIncomePage.answer()
-      income.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
-
-      payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
-      payments.WantToBePaidPage.answerNo()
-
-      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
-      applicant.ApplicantNinoKnownPage.answerNo()
-      applicant.ApplicantDateOfBirthPage.answer()
-
-      Then("I must be asked if my current address is in the UK")
-      applicant.ApplicantCurrentAddressInUkPage.onPage()
+      partner.SeparationDatePage.onPage()
     }
 
     Scenario(
@@ -376,39 +366,38 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
 
       When("I complete the journey")
+
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
-      ApplicantNamePage.answer()
-      RelationshipStatusPage.answerMarried()
-      AlwaysLivedInUkPage.answerYes()
 
-      income.ApplicantOrPartnerIncomePage.answer()
-      income.ApplicantOrPartnerBenefitsPage.answerUniversalCredit()
-
-      payments.CurrentlyReceivingChildBenefitPage.answerNotClaiming()
-      payments.WantToBePaidPage.answerYes()
-      payments.PaymentFrequencyPage.answerWeekly()
-      payments.ApplicantHasSuitableAccountPage.answerYes()
-      payments.BankAccountHolderPage.answerJoint()
-      payments.BankAccountDetailsPage.answer()
-
-      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
+      TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
+      applicant.ApplicantNamePage.answer()
+      applicant.ApplicantHasPreviousFamilyNamePage.answerNo()
       applicant.ApplicantDateOfBirthPage.answer()
-      applicant.ApplicantCurrentUkAddressPage.answer()
-      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
       applicant.ApplicantPhoneNumberPage.answer()
       applicant.ApplicantNationalityPage.answer()
+      applicant.ApplicantHasAlwaysLivedInUkPage.answerYes()
+      applicant.ApplicantCurrentUkAddressPage.answer()
+      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
+      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
+      applicant.ApplicantCurrentlyReceivingChildBenefitPage.answerNotClaiming()
+      applicant.CheckApplicantDetailsPage.answer()
 
+      TaskListPage.startPartnerDetails()
+      partner.RelationshipStatusPage.answerMarried()
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
       partner.PartnerNinoPage.answer()
       partner.PartnerDateOfBirthPage.answer()
       partner.PartnerNationalityPage.answer()
+      partner.PartnerIsHmfOrCivilServantPage.answerNo()
       partner.PartnerClaimingChildBenefitPage.answerGettingPayments()
       partner.PartnerEldestChildName.answer()
       partner.PartnerEldestChildDateOfBirthPage.answer()
+      partner.CheckPartnerDetailsPage.answer()
 
+      TaskListPage.startChildDetails()
       child.ChildNamePage(1).answer()
       child.ChildHasPreviousNamePage(1).answerNo()
       child.ChildBiologicalSexPage(1).answer()
@@ -423,15 +412,27 @@ class JourneySpec extends BaseSpec {
       child.CheckChildDetailsPage(1).continue()
       child.AddChildPage.answerNo()
 
+      TaskListPage.startPaymentDetails()
+      payments.ApplicantOrPartnerIncomePage.answer()
+      payments.WantToBePaidPage.answerYes()
+      payments.ApplicantOrPartnerBenefitsPage.answerUniversalCredit()
+      payments.PaymentFrequencyPage.answerWeekly()
+      payments.ApplicantHasSuitableAccountPage.answerYes()
+      payments.BankAccountHolderPage.answerJoint()
+      payments.BankAccountDetailsPage.answer()
+      payments.CheckPaymentDetails.answer()
+
+      TaskListPage.startFurtherInformation()
       AdditionalInformationPage.answerWithInformation()
 
       Then("I change my answers to indicate do not receive any benefits")
-      CheckYourAnswersPage.changeBenefits()
-      ApplicantOrPartnerBenefitsPage.uncheckAnswers()
-      ApplicantOrPartnerBenefitsPage.answerNoBenefits()
+      TaskListPage.startPaymentDetails()
+      payments.CheckPaymentDetails.changeBenefits()
+      payments.ApplicantOrPartnerBenefitsPage.uncheckAnswers()
+      payments.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
 
       Then("I must be shown the 'You cannot be paid weekly' page")
-      CannotBePaidWeeklyPage.onPage()
+      payments.CannotBePaidWeeklyPage.onPage()
     }
   }
 
@@ -448,47 +449,6 @@ class JourneySpec extends BaseSpec {
 
       Then("I must be shown the already claimed page")
       AlreadyClaimedPage.onPage()
-    }
-
-    Scenario(
-      "I have previously lived or worked outside the UK and am not HM Forces or a civil servant abroad",
-      ZapTests
-    ) {
-
-      Given("I am on the start page")
-      StartPage.loadPage()
-
-      When("I say that I have not always lived in the UK")
-      StartPage.startNow()
-      RecentlyClaimedPage.answerNo()
-      ApplicantNamePage.answer()
-      RelationshipStatusPage.answerSingle()
-      AlwaysLivedInUkPage.answerNo()
-      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
-
-      Then("I must be shown the kick-out page")
-      UsePrintAndPostFormPage.onPage()
-    }
-
-    Scenario(
-      "I have not always lived in the UK and neither me nor my partner are HM Forces or a civil servant abroad",
-      ZapTests
-    ) {
-
-      Given("I am on the start page")
-      StartPage.loadPage()
-
-      When("I say that I have previously lived or worked outside the UK")
-      StartPage.startNow()
-      RecentlyClaimedPage.answerNo()
-      ApplicantNamePage.answer()
-      RelationshipStatusPage.answerMarried()
-      AlwaysLivedInUkPage.answerNo()
-      applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
-      partner.PartnerIsHmfOrCivilServantPage.answerNo()
-
-      Then("I must be shown the kick-out page")
-      UsePrintAndPostFormPage.onPage()
     }
   }
 }
