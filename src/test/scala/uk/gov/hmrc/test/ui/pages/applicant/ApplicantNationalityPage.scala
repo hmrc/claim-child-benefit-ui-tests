@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
-import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
@@ -26,7 +25,7 @@ object ApplicantNationalityPage extends BasePage {
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value")).sendKeys("British")
+    selectFromAutocomplete("value", "British")
     continue()
   }
 }
