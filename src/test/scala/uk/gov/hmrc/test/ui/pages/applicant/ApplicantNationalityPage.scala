@@ -19,9 +19,9 @@ package uk.gov.hmrc.test.ui.pages.applicant
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-object ApplicantNationalityPage extends BasePage {
+final case class ApplicantNationalityPage(index: Int) extends BasePage {
 
-  override val url: String = "your-nationality"
+  override val url: String = s"your-nationality/$index"
 
   def answer()(implicit pos: Position): Unit = {
     onPage()

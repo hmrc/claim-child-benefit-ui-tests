@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.partner
+package uk.gov.hmrc.test.ui.pages.applicant
 
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.BasePage
+import org.openqa.selenium.By
+import org.scalatest.OptionValues
+import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
+import scala.collection.JavaConverters._
 
-final case class PartnerNationalityPage(index: Int) extends BasePage {
+object AddApplicantNationalityPage extends BasePage with BooleanPage with OptionValues {
 
-  override val url: String = s"partners-nationality/$index"
+  override val url: String = "add-nationality"
 
-  def answer()(implicit pos: Position): Unit = {
+  def remove(index: Int): Unit = {
     onPage()
-    selectFromAutocomplete("value", "British")
-    continue()
+    driver.findElements(By.xpath("//a[*/text() = 'Remove']")).asScala.lift(index - 1).value.click()
   }
 }
