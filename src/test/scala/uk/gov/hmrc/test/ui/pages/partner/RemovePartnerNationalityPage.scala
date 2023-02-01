@@ -16,16 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages.partner
 
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-final case class PartnerNationalityPage(index: Int) extends BasePage {
+final case class RemovePartnerNationalityPage(index: Int) extends BasePage with BooleanPage {
 
-  override val url: String = s"partners-nationality/$index"
-
-  def answer()(implicit pos: Position): Unit = {
-    onPage()
-    selectFromAutocomplete("value", "British")
-    continue()
-  }
+  override val url: String = s"remove-partners-nationality/$index"
 }
