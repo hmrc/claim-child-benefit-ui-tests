@@ -17,27 +17,22 @@
 package uk.gov.hmrc.test.ui.pages.payments
 
 import org.openqa.selenium.By
-import org.scalacheck.Gen
 import org.scalactic.source.Position
-import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-object BankAccountDetailsPage extends BasePage with OptionValues {
+object AccountTypePage extends BasePage {
 
-  override val url: String = "bank-account-details"
+  override val url: String = "account-type"
 
-  private lazy val sortCode: String = Gen.listOfN(6, Gen.numChar).map(_.mkString("")).sample.value
-
-  private lazy val accountNumber: String = (for {
-    chars <- Gen.listOfN(7, Gen.numChar)
-  } yield ('9' +: chars).mkString("")).sample.value
-
-  def answer()(implicit pos: Position): Unit = {
+  def answerSortCodeAccountNumber()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("firstName")).sendKeys("F")
-    driver.findElement(By.id("lastName")).sendKeys("Bar")
-    driver.findElement(By.id("sortCode")).sendKeys(sortCode)
-    driver.findElement(By.id("accountNumber")).sendKeys(accountNumber)
+    driver.findElement(By.id("value_0")).click()
+    continue()
+  }
+
+  def answerBuildingSociety()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_1")).click()
     continue()
   }
 }
