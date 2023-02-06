@@ -21,23 +21,20 @@ import org.scalacheck.Gen
 import org.scalactic.source.Position
 import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.applicant.ApplicantUsualCountryOfResidence.selectFromAutocomplete
 
-object BankAccountDetailsPage extends BasePage with OptionValues {
+object BuildingSocietyDetails extends BasePage with OptionValues {
 
-  override val url: String = "bank-account-details"
+  override val url: String = "building-society-details"
 
-  private lazy val sortCode: String = Gen.listOfN(6, Gen.numChar).map(_.mkString("")).sample.value
-
-  private lazy val accountNumber: String = (for {
-    chars <- Gen.listOfN(7, Gen.numChar)
-  } yield ('9' +: chars).mkString("")).sample.value
+  private lazy val rollNumber: String = Gen.listOfN(10, Gen.numChar).map(_.mkString("")).sample.value
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
     driver.findElement(By.id("firstName")).sendKeys("F")
     driver.findElement(By.id("lastName")).sendKeys("Bar")
-    driver.findElement(By.id("sortCode")).sendKeys(sortCode)
-    driver.findElement(By.id("accountNumber")).sendKeys(accountNumber)
+    selectFromAutocomplete("buildingSociety", "Abbey / Santander")
+    driver.findElement(By.id("rollNumber")).sendKeys(rollNumber)
     continue()
   }
 }

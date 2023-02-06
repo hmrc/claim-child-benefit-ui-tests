@@ -141,6 +141,7 @@ class JourneySpec extends BaseSpec {
       payments.PaymentFrequencyPage.answerEveryFourWeeks()
       payments.ApplicantHasSuitableAccountPage.answerYes()
       payments.BankAccountHolderPage.answerApplicant()
+      payments.AccountTypePage.answerSortCodeAccountNumber()
       payments.BankAccountDetailsPage.answer()
       payments.CheckPaymentDetails.answer()
 
@@ -436,7 +437,8 @@ class JourneySpec extends BaseSpec {
       payments.PaymentFrequencyPage.answerWeekly()
       payments.ApplicantHasSuitableAccountPage.answerYes()
       payments.BankAccountHolderPage.answerJoint()
-      payments.BankAccountDetailsPage.answer()
+      payments.AccountTypePage.answerBuildingSociety()
+      payments.BuildingSocietyDetails.answer()
       payments.CheckPaymentDetails.answer()
 
       TaskListPage.startFurtherInformation()
