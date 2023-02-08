@@ -16,9 +16,17 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
+import org.openqa.selenium.By
+import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
+import scala.collection.JavaConverters._
 
-object ApplicantUsuallyLivesInUk extends BasePage with BooleanPage {
+object AddCountryApplicantWorkedPage extends BasePage with BooleanPage with OptionValues {
 
-  override val url: String = "normally-live-in-uk"
+  override val url: String = "add-country-you-worked-in"
+
+  def remove(index: Int): Unit = {
+    onPage()
+    driver.findElements(By.xpath("//a[*/text() = 'Remove']")).asScala.lift(index - 1).value.click()
+  }
 }

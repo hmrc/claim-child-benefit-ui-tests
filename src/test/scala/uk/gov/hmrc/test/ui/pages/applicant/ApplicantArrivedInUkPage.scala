@@ -16,9 +16,20 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
+import org.scalactic.source.Position
+import uk.gov.hmrc.test.ui.pages.{BasePage, DatePage}
 
-object ApplicantUsuallyLivesInUk extends BasePage with BooleanPage {
+import java.time.LocalDate
 
-  override val url: String = "normally-live-in-uk"
+object ApplicantArrivedInUkPage extends BasePage with DatePage {
+
+  override val url: String = "arrived-in-uk"
+
+  private val date: LocalDate = LocalDate.now.minusYears(1)
+
+  def answer()(implicit pos: Position): Unit = {
+    onPage()
+    answerDate(date)
+    continue()
+  }
 }

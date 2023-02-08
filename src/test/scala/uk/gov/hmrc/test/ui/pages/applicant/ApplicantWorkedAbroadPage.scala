@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages.applicant
 
 import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-object ApplicantUsuallyLivesInUk extends BasePage with BooleanPage {
+object ApplicantWorkedAbroadPage extends BasePage with BooleanPage {
 
-  override val url: String = "normally-live-in-uk"
+  override val url: String = "have-you-worked-abroad"
 }

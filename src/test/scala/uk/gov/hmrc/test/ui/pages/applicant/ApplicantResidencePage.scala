@@ -16,9 +16,29 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
+import org.openqa.selenium.By
+import org.scalactic.source.Position
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-object ApplicantUsuallyLivesInUk extends BasePage with BooleanPage {
+object ApplicantResidencePage extends BasePage {
 
-  override val url: String = "normally-live-in-uk"
+  override val url: String = "where-have-you-lived"
+
+  def alwaysUk()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_0")).click()
+    continue()
+  }
+
+  def ukAndAbroad()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_1")).click()
+    continue()
+  }
+
+  def alwaysAbroad()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value_2")).click()
+    continue()
+  }
 }

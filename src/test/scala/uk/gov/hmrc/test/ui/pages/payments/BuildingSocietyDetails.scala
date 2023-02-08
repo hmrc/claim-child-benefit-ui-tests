@@ -21,7 +21,6 @@ import org.scalacheck.Gen
 import org.scalactic.source.Position
 import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.pages.applicant.ApplicantUsualCountryOfResidence.selectFromAutocomplete
 
 object BuildingSocietyDetails extends BasePage with OptionValues {
 

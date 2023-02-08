@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages.applicant
 
 import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-object ApplicantHasAlwaysLivedInUkPage extends BasePage with BooleanPage {
+final case class RemoveCountryApplicantWorkedPage(index: Int) extends BasePage with BooleanPage {
 
-  override val url: String = "always-lived-in-uk"
+  override val url: String = s"remove-country-you-worked-in/$index"
 }
