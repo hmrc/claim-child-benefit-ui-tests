@@ -16,15 +16,17 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
+import org.openqa.selenium.By
+import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-object ApplicantUsualCountryOfResidence extends BasePage {
+object ApplicantEmploymentStatusPage extends BasePage {
 
-  override val url: String = "usual-country-of-residence"
+  override val url: String = "your-employment-status"
 
-  def answer(): Unit = {
+  def answer()(implicit pos: Position): Unit = {
     onPage()
-    selectFromAutocomplete("value", "Spain")
+    driver.findElement(By.id("value_0")).click()
     continue()
   }
 }
