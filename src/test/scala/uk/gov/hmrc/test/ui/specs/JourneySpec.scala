@@ -58,6 +58,7 @@ class JourneySpec extends BaseSpec {
       applicant.AddApplicantNationalityPage.answerNo()
       applicant.ApplicantResidencePage.alwaysUk()
       applicant.ApplicantCurrentUkAddressPage.answer()
+      applicant.ApplicantLivedAtCurrentAddressForOneYearPage.answerYes()
       applicant.ApplicantIsHmfOrCivilServantPage.answerNo()
       applicant.ApplicantCurrentlyReceivingChildBenefitPage.answerNotClaiming()
       applicant.CheckApplicantDetailsPage.answer()
