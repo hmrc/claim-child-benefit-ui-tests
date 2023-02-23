@@ -147,7 +147,8 @@ class JourneySpec extends BaseSpec {
       payments.CheckPaymentDetails.answer()
 
       TaskListPage.startFurtherInformation()
-      AdditionalInformationPage.answerWithInformation()
+      IncludeAdditionalInformationPage.answerYes()
+      AdditionalInformationPage.answer()
 
       TaskListPage.submitClaim()
 
@@ -278,7 +279,7 @@ class JourneySpec extends BaseSpec {
       payments.CheckPaymentDetails.answer()
 
       TaskListPage.startFurtherInformation()
-      AdditionalInformationPage.answerWithNoInformation()
+      IncludeAdditionalInformationPage.answerNo()
 
       TaskListPage.submitClaim()
 
@@ -480,7 +481,8 @@ class JourneySpec extends BaseSpec {
       payments.CheckPaymentDetails.answer()
 
       TaskListPage.startFurtherInformation()
-      AdditionalInformationPage.answerWithInformation()
+      IncludeAdditionalInformationPage.answerYes()
+      AdditionalInformationPage.answer()
 
       Then("I change my answers to indicate do not receive any benefits")
       TaskListPage.startPaymentDetails()
