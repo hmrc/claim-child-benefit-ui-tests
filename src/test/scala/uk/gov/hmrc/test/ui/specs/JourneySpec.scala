@@ -38,6 +38,7 @@ class JourneySpec extends BaseSpec {
 
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerYes()
@@ -147,7 +148,8 @@ class JourneySpec extends BaseSpec {
       payments.CheckPaymentDetails.answer()
 
       TaskListPage.startFurtherInformation()
-      AdditionalInformationPage.answerWithInformation()
+      IncludeAdditionalInformationPage.answerYes()
+      AdditionalInformationPage.answer()
 
       TaskListPage.submitClaim()
 
@@ -170,6 +172,7 @@ class JourneySpec extends BaseSpec {
       StartPage.startNow()
 
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
@@ -278,7 +281,7 @@ class JourneySpec extends BaseSpec {
       payments.CheckPaymentDetails.answer()
 
       TaskListPage.startFurtherInformation()
-      AdditionalInformationPage.answerWithNoInformation()
+      IncludeAdditionalInformationPage.answerNo()
 
       TaskListPage.submitClaim()
 
@@ -298,6 +301,7 @@ class JourneySpec extends BaseSpec {
 
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
@@ -345,6 +349,7 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
@@ -382,6 +387,7 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
@@ -420,6 +426,7 @@ class JourneySpec extends BaseSpec {
 
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
@@ -480,7 +487,8 @@ class JourneySpec extends BaseSpec {
       payments.CheckPaymentDetails.answer()
 
       TaskListPage.startFurtherInformation()
-      AdditionalInformationPage.answerWithInformation()
+      IncludeAdditionalInformationPage.answerYes()
+      AdditionalInformationPage.answer()
 
       Then("I change my answers to indicate do not receive any benefits")
       TaskListPage.startPaymentDetails()

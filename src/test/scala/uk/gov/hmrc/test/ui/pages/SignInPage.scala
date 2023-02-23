@@ -16,16 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
-import org.scalactic.source.Position
+object SignInPage extends BasePage with BooleanPage {
 
-object AdditionalInformationPage extends BasePage {
-
-  override val url: String = "additional-information"
-
-  def answer()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value")).sendKeys("information")
-    continue()
-  }
+  override val url: String = "sign-in-to-government-gateway"
 }
