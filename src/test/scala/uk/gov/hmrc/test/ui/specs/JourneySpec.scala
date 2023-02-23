@@ -38,6 +38,7 @@ class JourneySpec extends BaseSpec {
 
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerYes()
@@ -171,6 +172,7 @@ class JourneySpec extends BaseSpec {
       StartPage.startNow()
 
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
@@ -299,6 +301,7 @@ class JourneySpec extends BaseSpec {
 
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
@@ -346,6 +349,7 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
@@ -383,6 +387,7 @@ class JourneySpec extends BaseSpec {
       StartPage.loadPage()
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
@@ -421,6 +426,7 @@ class JourneySpec extends BaseSpec {
 
       StartPage.startNow()
       RecentlyClaimedPage.answerNo()
+      SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerNo()
