@@ -23,9 +23,15 @@ final case class CountryApplicantWorkedPage(index: Int) extends BasePage {
 
   override val url: String = s"country-you-worked-in/$index"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answerSpain()(implicit pos: Position): Unit = {
     onPage()
     selectFromAutocomplete("value", "Spain")
+    continue()
+  }
+
+  def answerGermany()(implicit pos: Position): Unit = {
+    onPage()
+    selectFromAutocomplete("value", "Germany")
     continue()
   }
 }
