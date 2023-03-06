@@ -23,9 +23,15 @@ final case class PartnerNationalityPage(index: Int) extends BasePage {
 
   override val url: String = s"partners-nationality/$index"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answerBritish()(implicit pos: Position): Unit = {
     onPage()
     selectFromAutocomplete("value", "British")
+    continue()
+  }
+
+  def answerAmerican()(implicit pos: Position): Unit = {
+    onPage()
+    selectFromAutocomplete("value", "American")
     continue()
   }
 }
