@@ -30,9 +30,9 @@ trait NinoPage extends OptionValues { _: BasePage =>
         Gen
           .oneOf('A', 'B', 'C', 'E', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W', 'X', 'Y', 'Z')
           .map(_.toString)
-      digits     <- Gen.listOfN(6, Gen.numChar)
-      lastChar   <- Gen.oneOf('A', 'B', 'C', 'D')
-    } yield firstChar ++ secondChar ++ digits :+ lastChar
+      digits     <- Gen.listOfN(6, Gen.numChar).map(_.mkString)
+      lastChar   <- Gen.oneOf('A', 'B', 'C', 'D').map(_.toString)
+    } yield firstChar + secondChar + digits + lastChar
 
   private lazy val nino: String = arbitraryNino.sample.value
 
