@@ -29,7 +29,7 @@ object TaskListPage extends BasePage {
 
   def startPartnerDetails(): Unit = {
     onPage()
-    clickLink("Partner details")
+    clickLink("Relationship details")
   }
 
   def startChildDetails(): Unit = {
@@ -39,12 +39,12 @@ object TaskListPage extends BasePage {
 
   def startPaymentDetails(): Unit = {
     onPage()
-    clickLink("Payment details")
+    clickLink("Income details")
   }
 
   def startFurtherInformation(): Unit = {
     onPage()
-    clickLink("Further details to share")
+    clickLink("Additional information")
   }
 
   def submitClaim(): Unit = {
