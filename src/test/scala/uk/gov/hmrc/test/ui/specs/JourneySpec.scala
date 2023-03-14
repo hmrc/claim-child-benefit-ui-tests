@@ -151,7 +151,8 @@ class JourneySpec extends BaseSpec {
       IncludeAdditionalInformationPage.answerYes()
       AdditionalInformationPage.answer()
 
-      TaskListPage.submitClaim()
+      TaskListPage.acceptAndContinue()
+      DeclarationPage.acceptAndSend()
 
       Then("I must be able to download the PDF")
       // TODO
@@ -283,7 +284,8 @@ class JourneySpec extends BaseSpec {
       TaskListPage.startFurtherInformation()
       IncludeAdditionalInformationPage.answerNo()
 
-      TaskListPage.submitClaim()
+      TaskListPage.acceptAndContinue()
+      DeclarationPage.acceptAndSend()
 
       Then("I must be able to download the PDF")
       // TODO

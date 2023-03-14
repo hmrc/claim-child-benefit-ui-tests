@@ -47,9 +47,9 @@ object TaskListPage extends BasePage {
     clickLink("Additional information")
   }
 
-  def submitClaim(): Unit = {
+  def acceptAndContinue(): Unit = {
     onPage()
-    clickLink("Submit claim")
+    driver.findElement(By.xpath("//button[contains(text(), 'Accept and continue')]")).click()
   }
 
   private def clickLink(content: String): Unit =
