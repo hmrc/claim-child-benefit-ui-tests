@@ -277,7 +277,6 @@ class JourneySpec extends BaseSpec {
       TaskListPage.startPaymentDetails()
       payments.ApplicantOrPartnerIncomePage.answer()
       payments.WantToBePaidPage.answerYes()
-      payments.ApplicantOrPartnerBenefitsPage.answerNoBenefits()
       payments.PaidToExistingAccountPage.continue()
       payments.CheckPaymentDetails.answer()
 
