@@ -20,9 +20,9 @@ import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-object ApplicantOrPartnerIncomePage extends BasePage {
+object PartnerIncomePage extends BasePage {
 
-  override val url: String = "your-or-your-partners-income"
+  override val url: String = "your-partners-income"
 
   def answer()(implicit pos: Position): Unit = {
     onPage()

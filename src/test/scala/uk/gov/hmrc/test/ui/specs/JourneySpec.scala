@@ -275,7 +275,8 @@ class JourneySpec extends BaseSpec {
       child.AddChildPage.answerNo()
 
       TaskListPage.startPaymentDetails()
-      payments.ApplicantOrPartnerIncomePage.answer()
+      payments.ApplicantIncomePage.answer()
+      payments.PartnerIncomePage.answer()
       payments.WantToBePaidPage.answerYes()
       payments.PaidToExistingAccountPage.continue()
       payments.CheckPaymentDetails.answer()
@@ -477,7 +478,8 @@ class JourneySpec extends BaseSpec {
       child.AddChildPage.answerNo()
 
       TaskListPage.startPaymentDetails()
-      payments.ApplicantOrPartnerIncomePage.answer()
+      payments.ApplicantIncomePage.answer()
+      payments.PartnerIncomePage.answer()
       payments.WantToBePaidPage.answerYes()
       payments.ApplicantOrPartnerBenefitsPage.answerUniversalCredit()
       payments.PaymentFrequencyPage.answerWeekly()
