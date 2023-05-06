@@ -17,34 +17,21 @@
 package uk.gov.hmrc.test.ui.pages.child
 
 import org.openqa.selenium.By
+import org.scalacheck.Gen
 import org.scalactic.source.Position
+import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-final case class ChildBirthRegistrationCountryPage(index: Int) extends BasePage {
+final case class ChildNorthernIrishBirthCertificateNumberPage(index: Int) extends BasePage with OptionValues {
 
-  override val url: String = s"child-birth-registration-country/$index"
+  override def url: String = s"child-birth-certificate-registration-number/$index"
 
-  def answerEngland()(implicit pos: Position): Unit = {
+  private lazy val digits: String             = Gen.listOfN(7, Gen.numChar).map(_.mkString("")).sample.value
+  private lazy val registrationNumber: String = s"B1$digits"
+
+  def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value_0")).click()
-    continue()
-  }
-
-  def answerScotland()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_1")).click()
-    continue()
-  }
-
-  def answerNorthernIreland()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_3")).click()
-    continue()
-  }
-
-  def answerOther()(implicit pos: Position): Unit = {
-    onPage()
-    driver.findElement(By.id("value_4")).click()
+    driver.findElement(By.id("value")).sendKeys(registrationNumber)
     continue()
   }
 }
