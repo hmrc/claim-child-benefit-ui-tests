@@ -147,10 +147,6 @@ class JourneySpec extends BaseSpec {
       payments.BankAccountDetailsPage.answer()
       payments.CheckPaymentDetails.answer()
 
-      TaskListPage.startFurtherInformation()
-      IncludeAdditionalInformationPage.answerYes()
-      AdditionalInformationPage.answer()
-
       TaskListPage.acceptAndContinue()
       DeclarationPage.acceptAndSend()
 
@@ -281,9 +277,6 @@ class JourneySpec extends BaseSpec {
       payments.WantToBePaidPage.answerYes()
       payments.PaidToExistingAccountPage.continue()
       payments.CheckPaymentDetails.answer()
-
-      TaskListPage.startFurtherInformation()
-      IncludeAdditionalInformationPage.answerNo()
 
       TaskListPage.acceptAndContinue()
       DeclarationPage.acceptAndSend()
@@ -489,10 +482,6 @@ class JourneySpec extends BaseSpec {
       payments.AccountTypePage.answerBuildingSociety()
       payments.BuildingSocietyDetails.answer()
       payments.CheckPaymentDetails.answer()
-
-      TaskListPage.startFurtherInformation()
-      IncludeAdditionalInformationPage.answerYes()
-      AdditionalInformationPage.answer()
 
       Then("I change my answers to indicate do not receive any benefits")
       TaskListPage.startPaymentDetails()
