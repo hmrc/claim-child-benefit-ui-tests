@@ -42,11 +42,6 @@ object TaskListPage extends BasePage {
     clickLink("Income details")
   }
 
-  def startFurtherInformation(): Unit = {
-    onPage()
-    clickLink("Additional information")
-  }
-
   def acceptAndContinue(): Unit = {
     onPage()
     driver.findElement(By.xpath("//button[contains(text(), 'Accept and continue')]")).click()
