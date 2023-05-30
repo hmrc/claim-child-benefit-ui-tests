@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.applicant
+package uk.gov.hmrc.test.ui.utils
 
-import org.openqa.selenium.By
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.BasePage
+object FixedDelay {
 
-final case class ApplicantPreviousFamilyNamePage(index: Int) extends BasePage {
+  import scala.concurrent.duration._
 
-  override val url: String = s"your-previous-family-name/$index"
-
-  def answer(previousName: String)(implicit pos: Position): Unit = {
-   // onPage()
-    driver.findElement(By.id("value")).sendKeys(previousName)
-    continue()
+  def apply(duration: Long): Unit = {
+    val delayFor = Duration(duration, MILLISECONDS)
+    val deadline = delayFor.fromNow
+    while (deadline.hasTimeLeft()) { /* just wasting some cycles for a fixed period */ }
   }
 }

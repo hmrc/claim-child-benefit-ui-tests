@@ -19,15 +19,18 @@ package uk.gov.hmrc.test.ui.pages.applicant
 import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
+import io.cucumber.scala.EN
+import org.json4s.native.JsonMethods.parse
+
 
 object ApplicantNamePage extends BasePage {
 
   override val url: String = "your-name"
 
-  def answer()(implicit pos: Position): Unit = {
+  def enterYouDetails(username: String, password: String)(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("firstName")).sendKeys("Foo")
-    driver.findElement(By.id("lastName")).sendKeys("Bar")
+    driver.findElement(By.id("firstName")).sendKeys(username)
+    driver.findElement(By.id("lastName")).sendKeys(password)
     continue()
   }
 }

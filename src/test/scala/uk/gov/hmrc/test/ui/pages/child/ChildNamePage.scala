@@ -19,15 +19,19 @@ package uk.gov.hmrc.test.ui.pages.child
 import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
+import io.cucumber.scala.EN
+import io.cucumber.datatable.DataTable
+import io.cucumber.scala.{EN, ScalaDsl}
+
 
 final case class ChildNamePage(index: Int) extends BasePage {
 
   override val url: String = s"child-name/$index"
 
-  def answer()(implicit pos: Position): Unit = {
+  def enterUserDetails(username: String, password: String)(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("firstName")).sendKeys("Foo")
-    driver.findElement(By.id("lastName")).sendKeys("Bar")
+    driver.findElement(By.id("firstName")).sendKeys(username)
+    driver.findElement(By.id("lastName")).sendKeys(password)
     continue()
   }
 }

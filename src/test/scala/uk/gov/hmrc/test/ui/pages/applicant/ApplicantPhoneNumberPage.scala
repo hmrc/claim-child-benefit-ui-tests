@@ -20,13 +20,29 @@ import org.openqa.selenium.By
 import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
+import scala.util.Random
+
 object ApplicantPhoneNumberPage extends BasePage {
 
   override val url: String = "your-telephone-number"
+  def generateRandomNumber: String = {
+    val random = new Random()
+
+    // Generate random 9-digit number
+    val randomNumber = random.nextInt(100000000) + 900000000
+
+    // Append '0' at the beginning
+    val number = s"0$randomNumber"
+
+    // Ensure the generated number has exactly 10 digits
+    number.substring(0, 10)
+  }
+
+  val randomNumber = generateRandomNumber
 
   def answer()(implicit pos: Position): Unit = {
     onPage()
-    driver.findElement(By.id("value")).sendKeys("0777777777")
+    driver.findElement(By.id("value")).sendKeys(randomNumber)
     continue()
   }
 }

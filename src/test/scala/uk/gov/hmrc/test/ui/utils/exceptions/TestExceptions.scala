@@ -14,19 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.applicant
+package uk.gov.hmrc.test.ui.utils.exceptions
 
-import org.openqa.selenium.By
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.BasePage
+class Server502ResponseException extends Exception("Server has returned a 502 Bad Gateway Response")
 
-final case class ApplicantPreviousFamilyNamePage(index: Int) extends BasePage {
+class Server500ResponseException(stackTraceMessage: String) extends Exception(stackTraceMessage)
 
-  override val url: String = s"your-previous-family-name/$index"
-
-  def answer(previousName: String)(implicit pos: Position): Unit = {
-   // onPage()
-    driver.findElement(By.id("value")).sendKeys(previousName)
-    continue()
-  }
-}
+class TransactionNotFoundException(authorityId: String)
+    extends Exception(s"Unable to find a transaction for authorityId: $authorityId")

@@ -16,7 +16,12 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.apache.pdfbox.pdmodel.PDDocument
+import org.apache.pdfbox.text.PDFTextStripper
 import org.openqa.selenium.By
+import org.scalatest.matchers.should.Matchers.convertToAnyShouldWrapper
+
+import java.io.File
 
 object TaskListPage extends BasePage {
 
@@ -37,6 +42,9 @@ object TaskListPage extends BasePage {
     clickLink("Child details")
   }
 
+  private def clickLink(content: String): Unit =
+    driver.findElement(By.xpath(s"//a[text() = '$content']")).click()
+
   def startPaymentDetails(): Unit = {
     onPage()
     clickLink("Income details")
@@ -47,6 +55,7 @@ object TaskListPage extends BasePage {
     driver.findElement(By.xpath("//button[contains(text(), 'Accept and continue')]")).click()
   }
 
-  private def clickLink(content: String): Unit =
-    driver.findElement(By.xpath(s"//a[text() = '$content']")).click()
+  def clickOnDownloadPDF(): Unit = {
+    driver.findElement(By.id("download")).click()
+  }
 }

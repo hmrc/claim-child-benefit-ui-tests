@@ -25,7 +25,7 @@ object RelationshipStatusPage extends BasePage {
   override def url: String = "relationship-status"
 
   def answerSingle()(implicit pos: Position): Unit = {
-    onPage()
+    //onPage()
     driver.findElement(By.id("value_2")).click()
     continue()
   }

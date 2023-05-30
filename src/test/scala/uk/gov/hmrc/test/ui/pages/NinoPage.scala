@@ -36,7 +36,7 @@ trait NinoPage extends OptionValues { _: BasePage =>
 
   private lazy val nino: String = arbitraryNino.sample.value
 
-  def answer()(implicit pos: Position): Unit = {
+  def enterNiNo()(implicit pos: Position): Unit = {
     onPage()
     driver.findElement(By.id("value")).sendKeys(nino)
     continue()

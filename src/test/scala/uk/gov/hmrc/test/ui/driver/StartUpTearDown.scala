@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.applicant
+package uk.gov.hmrc.test.ui.driver
 
-import org.openqa.selenium.By
-import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.BasePage
+import io.cucumber.scala.Scenario
+import org.openqa.selenium.WebDriver
+import uk.gov.hmrc.test.ui.utils.BrowserPackage.Driver
 
-final case class ApplicantPreviousFamilyNamePage(index: Int) extends BasePage {
+trait StartUpTearDown {
+  def driver: WebDriver = Driver.webDriver
 
-  override val url: String = s"your-previous-family-name/$index"
+  implicit lazy val webDriver: WebDriver = driver
 
-  def answer(previousName: String)(implicit pos: Position): Unit = {
-   // onPage()
-    driver.findElement(By.id("value")).sendKeys(previousName)
-    continue()
-  }
+  def tearDown(result: Scenario): Unit = {}
 }
