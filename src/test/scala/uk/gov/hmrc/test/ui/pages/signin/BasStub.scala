@@ -14,19 +14,20 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.partner
+package uk.gov.hmrc.test.ui.pages.signin
 
 import org.openqa.selenium.By
-import org.scalatest.OptionValues
-import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
-import scala.jdk.CollectionConverters._
+import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-object AddPartnerNationalityPage extends BasePage with BooleanPage with OptionValues {
+object BasStub extends BrowserDriver {
 
-  override val url: String = "add-partners-nationality"
-
-  def remove(index: Int): Unit = {
-    onPage()
-    driver.findElements(By.xpath("//a[*/text() = 'Remove']")).asScala.lift(index - 1).value.click()
+  def loginSuccessfully(nino: String): Unit = {
+    driver.findElement(By.id("register-link")).click()
+    driver.findElement(By.xpath("//button[contains(text(), 'Submit')]")).click()
+    driver.findElement(By.id("mfaOutcome")).click()
+    driver.findElement(By.xpath("//button[contains(text(), 'Login')]")).click()
+    driver.findElement(By.id("forNino")).sendKeys(nino)
+    driver.findElement(By.id("Success")).click()
+    driver.findElement(By.id("submit-continue")).click()
   }
 }

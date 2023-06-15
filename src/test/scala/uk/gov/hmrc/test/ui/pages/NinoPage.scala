@@ -17,26 +17,12 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import org.scalacheck.Gen
 import org.scalactic.source.Position
 import org.scalatest.OptionValues
 
 trait NinoPage extends OptionValues { _: BasePage =>
 
-  private val arbitraryNino: Gen[String] =
-    for {
-      firstChar  <- Gen.oneOf('A', 'C', 'E', 'H', 'J', 'L', 'M', 'O', 'P', 'R', 'S', 'W', 'X', 'Y').map(_.toString)
-      secondChar <-
-        Gen
-          .oneOf('A', 'B', 'C', 'E', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W', 'X', 'Y', 'Z')
-          .map(_.toString)
-      digits     <- Gen.listOfN(6, Gen.numChar).map(_.mkString)
-      lastChar   <- Gen.oneOf('A', 'B', 'C', 'D').map(_.toString)
-    } yield firstChar + secondChar + digits + lastChar
-
-  private lazy val nino: String = arbitraryNino.sample.value
-
-  def answer()(implicit pos: Position): Unit = {
+  def answer(nino: String)(implicit pos: Position): Unit = {
     onPage()
     driver.findElement(By.id("value")).sendKeys(nino)
     continue()

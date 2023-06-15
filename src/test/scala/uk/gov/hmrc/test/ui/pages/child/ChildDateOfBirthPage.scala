@@ -25,7 +25,7 @@ final case class ChildDateOfBirthPage(index: Int) extends BasePage with DatePage
 
   override val url: String = s"child-date-of-birth/$index"
 
-  private def dob: LocalDate = LocalDate.now.minusYears(1)
+  private def dob: LocalDate = LocalDate.now.minusMonths(1)
 
   def answer()(implicit pos: Position): Unit = {
     onPage()

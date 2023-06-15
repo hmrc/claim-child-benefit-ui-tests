@@ -4,6 +4,6 @@ lazy val testSuite = (project in file("."))
     name := "claim-child-benefit-ui-tests",
     version := "0.1.0",
     scalaVersion := "2.13.8",
-    scalacOptions ++= Seq("-feature"),
+    scalacOptions ++= Seq("-feature", "-deprecation", "-Xfatal-warnings"),
     libraryDependencies ++= Dependencies.test
   )

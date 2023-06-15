@@ -20,7 +20,7 @@ import org.openqa.selenium.By
 import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 
 final case class AddChildPreviousNamePage(index: Int) extends BasePage with BooleanPage with OptionValues {
 

@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.pages.applicant
 import org.openqa.selenium.By
 import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 
 object AddApplicantPreviousFamilyNamePage extends BasePage with BooleanPage with OptionValues {
 
