@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages.partner
 
 import org.openqa.selenium.By
 import org.scalactic.source.Position
-import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
+import uk.gov.hmrc.test.ui.pages.BasePage
 
 object PartnerClaimingChildBenefitPage extends BasePage {
 

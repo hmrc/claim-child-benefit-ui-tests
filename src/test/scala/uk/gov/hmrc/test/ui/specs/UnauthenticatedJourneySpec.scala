@@ -19,8 +19,9 @@ package uk.gov.hmrc.test.ui.specs
 import uk.gov.hmrc.test.ui.pages.partner.RelationshipStatusPage
 import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.specs.tags.ZapTests
+import uk.gov.hmrc.test.ui.util.Nino
 
-class JourneySpec extends BaseSpec {
+class UnauthenticatedJourneySpec extends BaseSpec {
 
   Feature("Journeys for completing the form and generating a PDF") {
 
@@ -30,6 +31,8 @@ class JourneySpec extends BaseSpec {
         |who does not currently receive CHB""".stripMargin,
       ZapTests
     ) {
+
+      val nino = Nino.random()
 
       Given("I am on the start page")
       StartPage.loadPage()
@@ -42,7 +45,7 @@ class JourneySpec extends BaseSpec {
 
       TaskListPage.startApplicantSection()
       applicant.ApplicantNinoKnownPage.answerYes()
-      applicant.ApplicantNinoPage.answer()
+      applicant.ApplicantNinoPage.answer(nino)
       applicant.ApplicantNamePage.answer()
       applicant.ApplicantHasPreviousFamilyNamePage.answerYes()
       applicant.ApplicantPreviousFamilyNamePage(1).answer()
@@ -151,7 +154,7 @@ class JourneySpec extends BaseSpec {
       DeclarationPage.acceptAndSend()
 
       Then("I must be able to download the PDF")
-      // TODO
+      NextStepsPage.onPage()
     }
 
     Scenario(
@@ -161,6 +164,8 @@ class JourneySpec extends BaseSpec {
         |""".stripMargin,
       ZapTests
     ) {
+
+      val nino = Nino.random()
 
       Given("I am on the start page")
       StartPage.loadPage()
@@ -192,7 +197,7 @@ class JourneySpec extends BaseSpec {
       partner.RelationshipStatusPage.answerMarried()
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
-      partner.PartnerNinoPage.answer()
+      partner.PartnerNinoPage.answer(nino)
       partner.PartnerDateOfBirthPage.answer()
       partner.PartnerNationalityPage(1).answerBritish()
       partner.AddPartnerNationalityPage.answerYes()
@@ -282,7 +287,7 @@ class JourneySpec extends BaseSpec {
       DeclarationPage.acceptAndSend()
 
       Then("I must be able to download the PDF")
-      // TODO
+      NextStepsPage.onPage()
     }
   }
 
@@ -415,6 +420,8 @@ class JourneySpec extends BaseSpec {
       ZapTests
     ) {
 
+      val nino = Nino.random()
+
       Given("I am on the start page")
       StartPage.loadPage()
 
@@ -443,7 +450,7 @@ class JourneySpec extends BaseSpec {
       partner.RelationshipStatusPage.answerMarried()
       partner.PartnerNamePage.answer()
       partner.PartnerNinoKnownPage.answerYes()
-      partner.PartnerNinoPage.answer()
+      partner.PartnerNinoPage.answer(nino)
       partner.PartnerDateOfBirthPage.answer()
       partner.PartnerNationalityPage(1).answerBritish()
       partner.AddPartnerNationalityPage.answerNo()

@@ -14,19 +14,9 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.partner
+package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
-import org.scalatest.OptionValues
-import uk.gov.hmrc.test.ui.pages.{BasePage, BooleanPage}
-import scala.jdk.CollectionConverters._
+object NextStepsPage extends BasePage {
 
-object AddPartnerNationalityPage extends BasePage with BooleanPage with OptionValues {
-
-  override val url: String = "add-partners-nationality"
-
-  def remove(index: Int): Unit = {
-    onPage()
-    driver.findElements(By.xpath("//a[*/text() = 'Remove']")).asScala.lift(index - 1).value.click()
-  }
+  override val url: String = "next-steps"
 }

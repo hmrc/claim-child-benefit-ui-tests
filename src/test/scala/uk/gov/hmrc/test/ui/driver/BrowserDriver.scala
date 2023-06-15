@@ -27,3 +27,11 @@ trait BrowserDriver extends LazyLogging {
 
   implicit lazy val driver: WebDriver = SingletonDriver.getInstance(Some(options))
 }
+
+object BrowserDriver extends LazyLogging {
+
+  sys.addShutdownHook {
+    logger.info("Shutting down browser instance")
+    SingletonDriver.closeInstance()
+  }
+}

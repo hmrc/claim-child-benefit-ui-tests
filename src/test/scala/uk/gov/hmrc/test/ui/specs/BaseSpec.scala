@@ -22,9 +22,6 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.matchers.must.Matchers
 import org.scalatestplus.selenium.WebBrowser
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
-
-import scala.util.Try
 
 trait BaseSpec
     extends AnyFeatureSpec
@@ -38,10 +35,6 @@ trait BaseSpec
 
   override def afterEach(): Unit =
     driver.manage().deleteAllCookies()
-
-  override def afterAll() {
-    Try(SingletonDriver.closeInstance)
-  }
 
   override def withFixture(test: NoArgTest): Outcome = {
     val fixture = super.withFixture(test)
