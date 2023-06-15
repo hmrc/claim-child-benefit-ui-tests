@@ -25,14 +25,15 @@ object Nino extends OptionValues {
 
   private val arbitraryNino: Gen[String] =
     for {
-      firstChar  <- Gen.oneOf('A', 'C', 'E', 'H', 'J', 'L', 'M', 'O', 'P', 'R', 'S', 'W', 'X', 'Y').map(_.toString)
-      secondChar <-
+      firstChar    <- Gen.oneOf('A', 'C', 'E', 'H', 'J', 'L', 'M', 'O', 'P', 'R', 'S', 'W', 'X', 'Y').map(_.toString)
+      secondChar   <-
         Gen
           .oneOf('A', 'B', 'C', 'E', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W', 'X', 'Y', 'Z')
           .map(_.toString)
-      digits     <- Gen.listOfN(6, Gen.numChar).map(_.mkString)
-      lastChar   <- Gen.oneOf('A', 'B', 'C', 'D').map(_.toString)
-    } yield firstChar + secondChar + digits + lastChar
+      firstDigits  <- Gen.listOfN(3, Gen.choose(1, 9)).map(_.mkString)
+      secondDigits <- Gen.listOfN(3, Gen.numChar).map(_.mkString)
+      lastChar     <- Gen.oneOf('A', 'B', 'C', 'D').map(_.toString)
+    } yield firstChar + secondChar + firstDigits + secondDigits + lastChar
 
   def random(): String = arbitraryNino.sample.value
 
