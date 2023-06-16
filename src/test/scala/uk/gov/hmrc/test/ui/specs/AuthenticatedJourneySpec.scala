@@ -43,7 +43,6 @@ class AuthenticatedJourneySpec extends BaseSpec {
 
       When("I attempt to access the service again")
       StartPage.loadPage()
-      StartPage.startNow()
 
       Then("I must see the recently submitted page")
       RecentlySubmittedPage.onPage()
@@ -111,7 +110,6 @@ class AuthenticatedJourneySpec extends BaseSpec {
       StartPage.loadPage()
 
       When("I complete the journey")
-      StartPage.startNow()
       RecentlyClaimedPage.answerNo()
       SignInPage.answerYes()
 
@@ -215,7 +213,6 @@ class AuthenticatedJourneySpec extends BaseSpec {
 
   private def completeSimpleJourney(nino: String): Unit = {
 
-    StartPage.startNow()
     RecentlyClaimedPage.answerNo()
     SignInPage.answerYes()
 

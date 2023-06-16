@@ -39,7 +39,6 @@ class UnauthenticatedJourneySpec extends BaseSpec {
 
       When("I complete the journey")
 
-      StartPage.startNow()
       RecentlyClaimedPage.answerNo()
       SignInPage.answerNo()
 
@@ -171,7 +170,6 @@ class UnauthenticatedJourneySpec extends BaseSpec {
       StartPage.loadPage()
 
       When("I complete the journey")
-      StartPage.startNow()
 
       RecentlyClaimedPage.answerNo()
       SignInPage.answerNo()
@@ -300,7 +298,6 @@ class UnauthenticatedJourneySpec extends BaseSpec {
 
       When("I complete the journey")
 
-      StartPage.startNow()
       RecentlyClaimedPage.answerNo()
       SignInPage.answerNo()
 
@@ -348,7 +345,6 @@ class UnauthenticatedJourneySpec extends BaseSpec {
       Given("I am on the 'Relationship type' page")
 
       StartPage.loadPage()
-      StartPage.startNow()
       RecentlyClaimedPage.answerNo()
       SignInPage.answerNo()
 
@@ -386,7 +382,6 @@ class UnauthenticatedJourneySpec extends BaseSpec {
       Given("I am on the 'Relationship type' page")
 
       StartPage.loadPage()
-      StartPage.startNow()
       RecentlyClaimedPage.answerNo()
       SignInPage.answerNo()
 
@@ -427,7 +422,6 @@ class UnauthenticatedJourneySpec extends BaseSpec {
 
       When("I complete the journey")
 
-      StartPage.startNow()
       RecentlyClaimedPage.answerNo()
       SignInPage.answerNo()
 
@@ -509,7 +503,6 @@ class UnauthenticatedJourneySpec extends BaseSpec {
       StartPage.loadPage()
 
       When("I say that I have recently claimed Child Benefit")
-      StartPage.startNow()
       RecentlyClaimedPage.answerYes()
 
       Then("I must be shown the already claimed page")
