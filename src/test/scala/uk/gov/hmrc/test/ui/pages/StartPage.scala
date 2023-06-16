@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object StartPage extends BasePage {
@@ -27,7 +26,4 @@ object StartPage extends BasePage {
     driver.navigate().to(url)
     this
   }
-
-  def startNow(): Unit =
-    driver.findElement(By.xpath("//button[contains(text(), 'Start now')]")).click()
 }
