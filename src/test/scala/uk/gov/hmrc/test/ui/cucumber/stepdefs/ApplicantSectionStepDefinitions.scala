@@ -2,8 +2,11 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.pages.StartPage.onPage
 import uk.gov.hmrc.test.ui.pages.applicant
 import uk.gov.hmrc.test.ui.pages.applicant.ApplicantNamePage.{continue, driver}
+import uk.gov.hmrc.test.ui.pages.applicant.ApplicantPreviousFamilyNamePage
+
 
 class ApplicantSectionStepDefinitions extends ScalaDsl with EN {
 

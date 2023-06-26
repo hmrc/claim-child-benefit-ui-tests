@@ -20,19 +20,19 @@ import io.cucumber.junit.{Cucumber, CucumberOptions}
 import org.junit.runner.RunWith
 
 /**
- * This runner allow to run all test with "@local-dev" annotation, including debug in IntelliJ.
- * How to setup :
- * Run first time from IntelliJ
- * Then edit runner configuration and add this environmental variables:
- * -ea
- * -Dbrowser=chrome
- * -Denvironment=local
- * -Dwebdriver.chrome.driver=path to chrome drive, only if you want to run with chrome
- * -Dwebdriver.gecko.driver=path to gecko driver, only if you want to run with firefox
- *
- * For MS Windows with WSL you need to add additional parameter:
- * -Djava.net.preferIPv6Addresses=true
- */
+  * This runner allow to run all test with "@local-dev" annotation, including debug in IntelliJ.
+  * How to setup :
+  *   Run first time from IntelliJ
+  *   Then edit runner configuration and add this environmental variables:
+  *   -ea
+  *   -Dbrowser=chrome
+  *   -Denvironment=local
+  *   -Dwebdriver.chrome.driver=path to chrome drive, only if you want to run with chrome
+  *   -Dwebdriver.gecko.driver=path to gecko driver, only if you want to run with firefox
+  *
+  *   For MS Windows with WSL you need to add additional parameter:
+  *   -Djava.net.preferIPv6Addresses=true
+  */
 @RunWith(classOf[Cucumber])
 @CucumberOptions(
   features = Array("src/test/resources/features"),

@@ -43,10 +43,9 @@ trait BaseDetailsSteps extends ScalaDsl with EN with StartUpTearDown with Eventu
     applicant.ApplicantNinoPage.enterNiNo()
   }
 
-  And("""^I navigate to the Relationship details and selected relationship$""") { () =>
+  Then("""^I navigate to the Relationship details and selected relationship$""") { () =>
     TaskListPage.startPartnerDetails()
     partner.RelationshipStatusPage.answerSingle()
     partner.CheckPartnerDetailsPage.answer()
   }
-
 }

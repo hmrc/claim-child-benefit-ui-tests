@@ -23,7 +23,7 @@ object CheckPartnerDetailsPage extends BasePage {
   override val url: String = "check-partners-details"
 
   def answer(): Unit = {
-   // onPage()
+    onPage()
     continue()
   }
 }

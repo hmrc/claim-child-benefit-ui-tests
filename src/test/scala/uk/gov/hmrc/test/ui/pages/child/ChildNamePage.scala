@@ -29,7 +29,7 @@ final case class ChildNamePage(index: Int) extends BasePage {
   override val url: String = s"child-name/$index"
 
   def enterUserDetails(username: String, password: String)(implicit pos: Position): Unit = {
-    onPage()
+    //onPage()
     driver.findElement(By.id("firstName")).sendKeys(username)
     driver.findElement(By.id("lastName")).sendKeys(password)
     continue()

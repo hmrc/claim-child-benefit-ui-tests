@@ -24,9 +24,9 @@ final case class ApplicantPreviousFamilyNamePage(index: Int) extends BasePage {
 
   override val url: String = s"your-previous-family-name/$index"
 
-  def answer(previousName: String)(implicit pos: Position): Unit = {
-   // onPage()
-    driver.findElement(By.id("value")).sendKeys(previousName)
+  def answer(prevName: String)(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("value")).sendKeys(prevName)
     continue()
   }
 }

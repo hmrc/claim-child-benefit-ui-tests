@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.{DeclarationPage, RecentlyClaimedPage, SignInPa
 class ChildDetailSteps extends BaseDetailsSteps {
 
 
-  When("""^I navigate to child details page and completed the child details with (.*) and (.*)$""") { (firstName: String, lastName: String) =>
+  Then("""^I navigate to child details page and completed the child details with (.*) and (.*)$""") { (firstName: String, lastName: String) =>
     TaskListPage.startChildDetails()
     child.ChildNamePage(1).enterUserDetails(firstName, lastName)
     child.ChildHasPreviousNamePage(1).answerNo()
@@ -93,5 +93,5 @@ class ChildDetailSteps extends BaseDetailsSteps {
     child.RemoveChildPage(1).answerNo()
     child.AddChildPage.answerNo()
   }
-
+  
 }
