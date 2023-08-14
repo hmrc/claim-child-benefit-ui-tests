@@ -18,5 +18,5 @@ package uk.gov.hmrc.test.ui.pages
 
 object AlreadyClaimedPage extends BasePage {
 
-  override val url: String = "already-claimed-child-benefit"
+  override val url: String = "check-on-claim"
 }
