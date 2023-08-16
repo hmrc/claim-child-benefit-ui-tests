@@ -110,7 +110,7 @@ class AuthenticatedJourneySpec extends BaseSpec {
       StartPage.loadPage()
 
       When("I complete the journey")
-      RecentlyClaimedPage.answerNo()
+      RecentlyClaimedPage.answerMakeNewClaim()
       SignInPage.answerYes()
 
       BasStub.loginSuccessfully(nino)
@@ -213,7 +213,7 @@ class AuthenticatedJourneySpec extends BaseSpec {
 
   private def completeSimpleJourney(nino: String): Unit = {
 
-    RecentlyClaimedPage.answerNo()
+    RecentlyClaimedPage.answerMakeNewClaim()
     SignInPage.answerYes()
 
     BasStub.loginSuccessfully(nino)

@@ -39,7 +39,7 @@ class UnauthenticatedJourneySpec extends BaseSpec {
 
       When("I complete the journey")
 
-      RecentlyClaimedPage.answerNo()
+      RecentlyClaimedPage.answerMakeNewClaim()
       SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
@@ -171,7 +171,7 @@ class UnauthenticatedJourneySpec extends BaseSpec {
 
       When("I complete the journey")
 
-      RecentlyClaimedPage.answerNo()
+      RecentlyClaimedPage.answerMakeNewClaim()
       SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
@@ -298,7 +298,7 @@ class UnauthenticatedJourneySpec extends BaseSpec {
 
       When("I complete the journey")
 
-      RecentlyClaimedPage.answerNo()
+      RecentlyClaimedPage.answerMakeNewClaim()
       SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
@@ -345,7 +345,7 @@ class UnauthenticatedJourneySpec extends BaseSpec {
       Given("I am on the 'Relationship type' page")
 
       StartPage.loadPage()
-      RecentlyClaimedPage.answerNo()
+      RecentlyClaimedPage.answerMakeNewClaim()
       SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
@@ -382,7 +382,7 @@ class UnauthenticatedJourneySpec extends BaseSpec {
       Given("I am on the 'Relationship type' page")
 
       StartPage.loadPage()
-      RecentlyClaimedPage.answerNo()
+      RecentlyClaimedPage.answerMakeNewClaim()
       SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
@@ -422,7 +422,7 @@ class UnauthenticatedJourneySpec extends BaseSpec {
 
       When("I complete the journey")
 
-      RecentlyClaimedPage.answerNo()
+      RecentlyClaimedPage.answerMakeNewClaim()
       SignInPage.answerNo()
 
       TaskListPage.startApplicantSection()
@@ -503,7 +503,7 @@ class UnauthenticatedJourneySpec extends BaseSpec {
       StartPage.loadPage()
 
       When("I say that I have recently claimed Child Benefit")
-      RecentlyClaimedPage.answerYes()
+      RecentlyClaimedPage.answerCheckOnProgressOfClaim()
 
       Then("I must be shown the already claimed page")
       AlreadyClaimedPage.onPage()

@@ -32,4 +32,34 @@ trait BooleanPage { _: BasePage =>
     driver.findElement(By.id("value-no")).click()
     continue()
   }
+
+  def answerMakeNewClaim()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("serviceType")).click()
+    continue()
+  }
+
+  def answerAddChildToExistingClaim()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("serviceType-2")).click()
+    continue()
+  }
+
+  def answerCheckOnProgressOfClaim()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("serviceType-3")).click()
+    continue()
+  }
+
+  def answerRestartYourPayment()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("serviceType-4")).click()
+    continue()
+  }
+
+  def answerStopYourPayment()(implicit pos: Position): Unit = {
+    onPage()
+    driver.findElement(By.id("serviceType-5")).click()
+    continue()
+  }
 }
