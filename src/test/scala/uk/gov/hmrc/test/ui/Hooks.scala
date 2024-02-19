@@ -14,13 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.driver
+package uk.gov.hmrc.test.ui
 
-import org.openqa.selenium.remote.RemoteWebDriver
-import uk.gov.hmrc.selenium.webdriver.Driver
+import io.cucumber.scala.{EN, ScalaDsl}
+import uk.gov.hmrc.selenium.webdriver.Browser
 
-trait BrowserDriver {
+object Hooks extends ScalaDsl with EN with Browser {
+  BeforeAll {
+    startBrowser()
+  }
 
-  implicit def driver: RemoteWebDriver = Driver.instance
+  AfterAll {
+    quitBrowser()
+  }
 
 }
