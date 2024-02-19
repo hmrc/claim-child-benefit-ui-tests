@@ -16,34 +16,24 @@
 
 package uk.gov.hmrc.test.ui.specs
 
-import org.scalatest._
-import org.scalatest.concurrent.Eventually
+
 import org.scalatest.featurespec.AnyFeatureSpec
-import org.scalatest.matchers.must.Matchers
-import org.scalatestplus.selenium.WebBrowser
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.{BeforeAndAfterEach, GivenWhenThen}
+import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 
 trait BaseSpec
-    extends AnyFeatureSpec
+  extends AnyFeatureSpec
     with GivenWhenThen
-    with BeforeAndAfterAll
-    with BeforeAndAfterEach
     with Matchers
-    with WebBrowser
-    with BrowserDriver
-    with Eventually {
+    with BeforeAndAfterEach
+    with Browser
+    with ScreenshotOnFailure {
+
+  override def beforeEach(): Unit =
+    startBrowser()
 
   override def afterEach(): Unit =
-    driver.manage().deleteAllCookies()
+    quitBrowser()
 
-  override def withFixture(test: NoArgTest): Outcome = {
-    val fixture = super.withFixture(test)
-    if (!fixture.isSucceeded) {
-      val screenshotName = test.name.replaceAll(" ", "_").replaceAll(":", "") + ".png"
-      setCaptureDir("./target/test-reports/html-report/screenshots/")
-      capture to screenshotName
-      markup(s"<img src='screenshots/$screenshotName' />")
-    }
-    fixture
-  }
 }
