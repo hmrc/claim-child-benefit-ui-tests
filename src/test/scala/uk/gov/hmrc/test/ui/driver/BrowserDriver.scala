@@ -16,19 +16,11 @@
 
 package uk.gov.hmrc.test.ui.driver
 
-import com.typesafe.scalalogging.LazyLogging
-import org.openqa.selenium.WebDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
+import org.openqa.selenium.remote.RemoteWebDriver
+import uk.gov.hmrc.selenium.webdriver.Driver
 
-trait BrowserDriver extends LazyLogging {
+trait BrowserDriver {
 
-  implicit lazy val driver: WebDriver = SingletonDriver.getInstance()
-}
+  implicit def driver: RemoteWebDriver = Driver.instance
 
-object BrowserDriver extends LazyLogging {
-
-  sys.addShutdownHook {
-    logger.info("Shutting down browser instance")
-    SingletonDriver.closeInstance()
-  }
 }
