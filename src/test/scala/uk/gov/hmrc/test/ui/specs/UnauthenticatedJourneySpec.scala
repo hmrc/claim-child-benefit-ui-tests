@@ -27,7 +27,7 @@ class UnauthenticatedJourneySpec extends BaseSpec {
 
     Scenario(
       """Single parent journey,
-        |earning over £50kpa,
+        |earning over lower income threshold pa,
         |who does not currently receive CHB""".stripMargin,
       ZapTests
     ) {
@@ -158,7 +158,7 @@ class UnauthenticatedJourneySpec extends BaseSpec {
 
     Scenario(
       """Married parent journey
-        |who earns over £50kpa,
+        |who earns over lower income threshold pa,
         |who already receives CHB
         |""".stripMargin,
       ZapTests
