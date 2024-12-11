@@ -28,7 +28,7 @@ trait BasePage extends BrowserDriver with Matchers {
 
   def url: String
 
-  @nowarn("msg=parameter value pos in method continue is never used")
+  @nowarn("msg=parameter pos in method continue is never used")
   def continue()(implicit pos: Position): Unit =
     driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
 
