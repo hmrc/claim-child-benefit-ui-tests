@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages.child
 
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.{BasePage, DatePage}
 
 import java.time.LocalDate
@@ -27,7 +26,7 @@ final case class ChildDateOfBirthPage(index: Int) extends BasePage with DatePage
 
   private def dob: LocalDate = LocalDate.now.minusMonths(1)
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     answerDate(dob)
     continue()

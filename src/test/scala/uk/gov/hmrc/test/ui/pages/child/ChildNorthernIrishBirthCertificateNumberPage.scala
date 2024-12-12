@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages.child
 
 import org.openqa.selenium.By
 import org.scalacheck.Gen
-import org.scalactic.source.Position
 import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
 
@@ -29,7 +28,7 @@ final case class ChildNorthernIrishBirthCertificateNumberPage(index: Int) extend
   private lazy val digits: String             = Gen.listOfN(7, Gen.numChar).map(_.mkString("")).sample.value
   private lazy val registrationNumber: String = s"B1$digits"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("value")).sendKeys(registrationNumber)
     continue()

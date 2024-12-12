@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages.payments
 
 import org.openqa.selenium.By
 import org.scalacheck.Gen
-import org.scalactic.source.Position
 import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
 
@@ -28,7 +27,7 @@ object BuildingSocietyDetails extends BasePage with OptionValues {
 
   private lazy val rollNumber: String = Gen.listOfN(10, Gen.numChar).map(_.mkString("")).sample.value
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("firstName")).sendKeys("F")
     driver.findElement(By.id("lastName")).sendKeys("Bar")

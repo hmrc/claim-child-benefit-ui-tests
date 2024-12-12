@@ -16,14 +16,13 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object CheckDetailsPage extends BasePage {
 
   override def url: String = "check-details"
 
-  override def continue()(implicit pos: Position): Unit = {
+  override def continue(): Unit = {
     onPage()
     super.continue()
   }

@@ -17,14 +17,13 @@
 package uk.gov.hmrc.test.ui.pages.partner
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object PartnerNamePage extends BasePage {
 
   override val url: String = "partners-name"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("firstName")).sendKeys("Baz")
     driver.findElement(By.id("lastName")).sendKeys("Quux")

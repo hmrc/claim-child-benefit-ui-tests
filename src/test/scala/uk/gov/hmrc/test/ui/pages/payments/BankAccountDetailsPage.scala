@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages.payments
 
 import org.openqa.selenium.By
 import org.scalacheck.Gen
-import org.scalactic.source.Position
 import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
 
@@ -32,7 +31,7 @@ object BankAccountDetailsPage extends BasePage with OptionValues {
     chars <- Gen.listOfN(7, Gen.numChar)
   } yield ('9' +: chars).mkString("")).sample.value
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("firstName")).sendKeys("F")
     driver.findElement(By.id("lastName")).sendKeys("Bar")

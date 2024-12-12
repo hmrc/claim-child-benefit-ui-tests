@@ -17,20 +17,19 @@
 package uk.gov.hmrc.test.ui.pages.child
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 final case class ApplicantRelationshipToChildPage(index: Int) extends BasePage {
 
   override val url: String = s"your-relationship-to-child/$index"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("value_0")).click()
     continue()
   }
 
-  def answerAdopting()(implicit pos: Position): Unit = {
+  def answerAdopting(): Unit = {
     onPage()
     driver.findElement(By.id("value_2")).click()
     continue()

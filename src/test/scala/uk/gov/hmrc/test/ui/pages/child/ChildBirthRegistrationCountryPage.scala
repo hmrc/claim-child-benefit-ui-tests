@@ -17,32 +17,31 @@
 package uk.gov.hmrc.test.ui.pages.child
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 final case class ChildBirthRegistrationCountryPage(index: Int) extends BasePage {
 
   override val url: String = s"child-birth-registration-country/$index"
 
-  def answerEngland()(implicit pos: Position): Unit = {
+  def answerEngland(): Unit = {
     onPage()
     driver.findElement(By.id("value_0")).click()
     continue()
   }
 
-  def answerScotland()(implicit pos: Position): Unit = {
+  def answerScotland(): Unit = {
     onPage()
     driver.findElement(By.id("value_1")).click()
     continue()
   }
 
-  def answerNorthernIreland()(implicit pos: Position): Unit = {
+  def answerNorthernIreland(): Unit = {
     onPage()
     driver.findElement(By.id("value_3")).click()
     continue()
   }
 
-  def answerOther()(implicit pos: Position): Unit = {
+  def answerOther(): Unit = {
     onPage()
     driver.findElement(By.id("value_4")).click()
     continue()

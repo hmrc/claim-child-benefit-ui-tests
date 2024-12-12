@@ -17,32 +17,31 @@
 package uk.gov.hmrc.test.ui.pages.partner
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object RelationshipStatusPage extends BasePage {
 
   override def url: String = "relationship-status"
 
-  def answerSingle()(implicit pos: Position): Unit = {
+  def answerSingle(): Unit = {
     onPage()
     driver.findElement(By.id("value_2")).click()
     continue()
   }
 
-  def answerMarried()(implicit pos: Position): Unit = {
+  def answerMarried(): Unit = {
     onPage()
     driver.findElement(By.id("value_0")).click()
     continue()
   }
 
-  def answerCohabiting()(implicit pos: Position): Unit = {
+  def answerCohabiting(): Unit = {
     onPage()
     driver.findElement(By.id("value_1")).click()
     continue()
   }
 
-  def answerSeparated()(implicit pos: Position): Unit = {
+  def answerSeparated(): Unit = {
     onPage()
     driver.findElement(By.id("value_3")).click()
     continue()

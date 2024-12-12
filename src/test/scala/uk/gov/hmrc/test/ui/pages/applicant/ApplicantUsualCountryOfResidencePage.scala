@@ -16,14 +16,13 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ApplicantUsualCountryOfResidencePage extends BasePage {
 
   override val url: String = s"country-you-normally-live"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     selectFromAutocomplete("value", "Spain")
     continue()

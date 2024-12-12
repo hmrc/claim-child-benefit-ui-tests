@@ -17,20 +17,19 @@
 package uk.gov.hmrc.test.ui.pages.applicant
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ApplicantCurrentlyReceivingChildBenefitPage extends BasePage {
 
   override val url: String = "currently-receiving-child-benefit"
 
-  def answerGettingPayments()(implicit pos: Position): Unit = {
+  def answerGettingPayments(): Unit = {
     onPage()
     driver.findElement(By.id("value_0")).click()
     continue()
   }
 
-  def answerNotClaiming()(implicit pos: Position): Unit = {
+  def answerNotClaiming(): Unit = {
     onPage()
     driver.findElement(By.id("value_2")).click()
     continue()

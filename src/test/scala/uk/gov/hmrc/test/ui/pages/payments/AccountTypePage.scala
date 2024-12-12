@@ -17,20 +17,19 @@
 package uk.gov.hmrc.test.ui.pages.payments
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object AccountTypePage extends BasePage {
 
   override val url: String = "account-type"
 
-  def answerSortCodeAccountNumber()(implicit pos: Position): Unit = {
+  def answerSortCodeAccountNumber(): Unit = {
     onPage()
     driver.findElement(By.id("value_0")).click()
     continue()
   }
 
-  def answerBuildingSociety()(implicit pos: Position): Unit = {
+  def answerBuildingSociety(): Unit = {
     onPage()
     driver.findElement(By.id("value_1")).click()
     continue()

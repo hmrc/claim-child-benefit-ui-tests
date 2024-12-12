@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages.child
 
 import org.openqa.selenium.By
 import org.scalacheck.Gen
-import org.scalactic.source.Position
 import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
 
@@ -34,7 +33,7 @@ final case class ChildScottishBirthCertificateDetailsPage(index: Int) extends Ba
   private lazy val year     = Gen.choose(minYear, maxYear).sample.value.toString
   private lazy val entry    = Gen.choose(1, 999).sample.value.toString
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("district")).sendKeys(district)
     driver.findElement(By.id("year")).sendKeys(year)

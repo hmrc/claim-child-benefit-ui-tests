@@ -17,14 +17,13 @@
 package uk.gov.hmrc.test.ui.pages.applicant
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ApplicantPreviousInternationalAddressPage extends BasePage {
 
   override val url: String = "your-previous-international-address"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("line1")).sendKeys("1 Test Street")
     driver.findElement(By.id("town")).sendKeys("Test Town")

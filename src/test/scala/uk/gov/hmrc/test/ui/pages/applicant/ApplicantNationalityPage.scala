@@ -16,20 +16,19 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 final case class ApplicantNationalityPage(index: Int) extends BasePage {
 
   override val url: String = s"your-nationality/$index"
 
-  def answerBritish()(implicit pos: Position): Unit = {
+  def answerBritish(): Unit = {
     onPage()
     selectFromAutocomplete("value", "British")
     continue()
   }
 
-  def answerAmerican()(implicit pos: Position): Unit = {
+  def answerAmerican(): Unit = {
     onPage()
     selectFromAutocomplete("value", "American")
     continue()

@@ -18,22 +18,18 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.{By, WebElement}
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
-import org.scalactic.source.Position
 import org.scalatest.matchers.must.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-
-import scala.annotation.nowarn
 
 trait BasePage extends BrowserDriver with Matchers {
 
   def url: String
 
-  @nowarn("msg=parameter value pos in method continue is never used")
-  def continue()(implicit pos: Position): Unit =
+  def continue(): Unit =
     driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
 
-  def onPage()(implicit pos: Position): Unit =
+  def onPage(): Unit =
     driver.getCurrentUrl must startWith(s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url")
 
   def waitForElement(by: By): WebElement =

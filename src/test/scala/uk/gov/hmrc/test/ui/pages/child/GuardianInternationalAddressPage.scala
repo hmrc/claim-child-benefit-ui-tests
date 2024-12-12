@@ -17,14 +17,13 @@
 package uk.gov.hmrc.test.ui.pages.child
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 final case class GuardianInternationalAddressPage(index: Int) extends BasePage {
 
   override val url: String = s"person-child-lives-with-international-address/$index"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("line1")).sendKeys("1 Test Street")
     driver.findElement(By.id("town")).sendKeys("Test Town")

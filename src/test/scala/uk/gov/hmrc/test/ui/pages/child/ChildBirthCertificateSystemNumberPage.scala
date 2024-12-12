@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages.child
 
 import org.openqa.selenium.By
 import org.scalacheck.Gen
-import org.scalactic.source.Position
 import org.scalatest.OptionValues
 import uk.gov.hmrc.test.ui.pages.BasePage
 
@@ -28,7 +27,7 @@ final case class ChildBirthCertificateSystemNumberPage(index: Int) extends BaseP
 
   private lazy val certificateSystemNumber: String = Gen.listOfN(9, Gen.numChar).map(_.mkString("")).sample.value
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("value")).sendKeys(certificateSystemNumber)
     continue()

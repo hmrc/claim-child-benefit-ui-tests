@@ -17,12 +17,11 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import org.scalatest.OptionValues
 
 trait NinoPage extends OptionValues { _: BasePage =>
 
-  def answer(nino: String)(implicit pos: Position): Unit = {
+  def answer(nino: String): Unit = {
     onPage()
     driver.findElement(By.id("value")).sendKeys(nino)
     continue()

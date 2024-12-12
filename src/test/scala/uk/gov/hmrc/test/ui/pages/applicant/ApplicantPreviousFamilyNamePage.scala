@@ -17,14 +17,13 @@
 package uk.gov.hmrc.test.ui.pages.applicant
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 final case class ApplicantPreviousFamilyNamePage(index: Int) extends BasePage {
 
   override val url: String = s"your-previous-family-name/$index"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("value")).sendKeys("Quux")
     continue()

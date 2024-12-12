@@ -16,14 +16,13 @@
 
 package uk.gov.hmrc.test.ui.pages.payments
 
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object TaxChargeExplanationPage extends BasePage {
 
   override val url: String = "tax-charge-explanation"
 
-  override def continue()(implicit pos: Position): Unit = {
+  override def continue(): Unit = {
     onPage()
     super.continue()
   }

@@ -17,14 +17,13 @@
 package uk.gov.hmrc.test.ui.pages.applicant
 
 import org.openqa.selenium.By
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ApplicantEmploymentStatusPage extends BasePage {
 
   override val url: String = "your-employment-status"
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     driver.findElement(By.id("value_0")).click()
     continue()

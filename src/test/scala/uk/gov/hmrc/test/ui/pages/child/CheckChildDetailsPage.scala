@@ -16,14 +16,13 @@
 
 package uk.gov.hmrc.test.ui.pages.child
 
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 final case class CheckChildDetailsPage(index: Int) extends BasePage {
 
   override val url: String = s"check-child-details/$index"
 
-  override def continue()(implicit pos: Position): Unit = {
+  override def continue(): Unit = {
     onPage()
     super.continue()
   }

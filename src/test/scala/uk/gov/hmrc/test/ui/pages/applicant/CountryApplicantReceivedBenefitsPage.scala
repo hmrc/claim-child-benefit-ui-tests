@@ -16,20 +16,19 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 final case class CountryApplicantReceivedBenefitsPage(index: Int) extends BasePage {
 
   override val url: String = s"country-paid-you-benefits/$index"
 
-  def answerSpain()(implicit pos: Position): Unit = {
+  def answerSpain(): Unit = {
     onPage()
     selectFromAutocomplete("value", "Spain")
     continue()
   }
 
-  def answerGermany()(implicit pos: Position): Unit = {
+  def answerGermany(): Unit = {
     onPage()
     selectFromAutocomplete("value", "Germany")
     continue()

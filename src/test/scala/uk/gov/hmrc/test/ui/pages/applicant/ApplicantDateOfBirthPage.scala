@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages.applicant
 
-import org.scalactic.source.Position
 import uk.gov.hmrc.test.ui.pages.{BasePage, DatePage}
 
 import java.time.LocalDate
@@ -27,7 +26,7 @@ object ApplicantDateOfBirthPage extends BasePage with DatePage {
 
   private val dob: LocalDate = LocalDate.now.minusYears(21)
 
-  def answer()(implicit pos: Position): Unit = {
+  def answer(): Unit = {
     onPage()
     answerDate(dob)
     continue()
