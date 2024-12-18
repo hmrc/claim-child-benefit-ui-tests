@@ -16,8 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, WebElement}
 import org.scalactic.source.Position
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.scalatest.matchers.must.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
@@ -35,8 +36,17 @@ trait BasePage extends BrowserDriver with Matchers {
   def onPage()(implicit pos: Position): Unit =
     driver.getCurrentUrl must startWith(s"${TestConfiguration.url("claim-child-benefit-frontend")}/$url")
 
+  def waitForElement(by: By): WebElement =
+    new FluentWait(driver)
+      .until {
+        ExpectedConditions.presenceOfElementLocated(by)
+      }
+
   def selectFromAutocomplete(inputId: String, data: String): Unit = {
+    driver.findElement(By.id(inputId)).click()
+    waitForElement(By.id(inputId))
     driver.findElement(By.id(inputId)).sendKeys(data)
-    driver.findElement(By.cssSelector(s"li#${inputId}__option--0")).click()
+    waitForElement(By.id(inputId))
+    driver.findElement(By.id(s"${inputId}__option--0")).click()
   }
 }
