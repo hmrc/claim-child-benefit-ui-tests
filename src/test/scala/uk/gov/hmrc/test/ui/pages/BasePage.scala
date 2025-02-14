@@ -23,13 +23,10 @@ import org.scalatest.matchers.must.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-//import scala.annotation.nowarn
-
 trait BasePage extends BrowserDriver with Matchers {
 
   def url: String
 
-  //@nowarn("msg=parameter pos in method continue is never used")
   def continue()(implicit pos: Position): Unit =
     driver.findElement(By.xpath("//button[contains(text(), 'Continue')]")).click()
 
