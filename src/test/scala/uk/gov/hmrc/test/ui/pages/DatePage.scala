@@ -20,7 +20,7 @@ import org.openqa.selenium.By
 
 import java.time.LocalDate
 
-trait DatePage { _: BasePage =>
+trait DatePage { this : BasePage =>
 
   def answerDate(date: LocalDate, field: String = "value"): Unit = {
     driver.findElement(By.id(s"$field.day")).sendKeys(date.getDayOfMonth.toString)

@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.pages
 import org.openqa.selenium.By
 import org.scalactic.source.Position
 
-trait BooleanPage { _: BasePage =>
+trait BooleanPage { this : BasePage =>
 
   def answerYes()(implicit pos: Position): Unit = {
     onPage()
