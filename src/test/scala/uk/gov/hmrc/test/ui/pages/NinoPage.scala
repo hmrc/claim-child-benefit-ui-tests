@@ -20,7 +20,7 @@ import org.openqa.selenium.By
 import org.scalactic.source.Position
 import org.scalatest.OptionValues
 
-trait NinoPage extends OptionValues { _: BasePage =>
+trait NinoPage extends OptionValues { this : BasePage =>
 
   def answer(nino: String)(implicit pos: Position): Unit = {
     onPage()
