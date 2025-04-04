@@ -3,7 +3,7 @@ lazy val testSuite = (project in file("."))
   .settings(
     name := "claim-child-benefit-ui-tests",
     version := "0.1.0",
-    scalaVersion := "3.6.2",
+    scalaVersion := "3.6.4",
     scalacOptions ++= Seq(
       "-feature",
       "-Xfatal-warnings"
